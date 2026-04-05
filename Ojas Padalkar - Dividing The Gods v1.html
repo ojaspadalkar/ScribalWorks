@@ -1,0 +1,2792 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dividing the Gods: The Indo-Iranian Schism and Its Echoes Through History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROOT & VARIABLES
+   ============================================================ */
+:root {
+  --obsidian:     #080605;
+  --deep-bg:      #0d0b08;
+  --mid-bg:       #13100c;
+  --surface:      #1c1710;
+  --surface-2:    #241f14;
+  --surface-3:    #2e2718;
+  --gold:         #c9a227;
+  --gold-light:   #e8c84a;
+  --gold-pale:    #f0dfa0;
+  --crimson:      #8b1a1a;
+  --crimson-light:#c94040;
+  --crimson-pale: #e8a0a0;
+  --lapis:        #1a3a5c;
+  --lapis-light:  #2b6199;
+  --lapis-pale:   #a8c8e8;
+  --parchment:    #e8dcc4;
+  --parchment-dim:#b8aa90;
+  --text:         #ddd0b8;
+  --text-dim:     #a8988080;
+  --ivory:        #f2e8d4;
+  --separator:    #3d3320;
+  --glow-gold:    rgba(201,162,39,0.15);
+  --glow-crimson: rgba(139,26,26,0.15);
+  --font-display: 'Cinzel', serif;
+  --font-display-dec: 'Cinzel Decorative', cursive;
+  --font-body:    'EB Garamond', serif;
+  --font-pull:    'Playfair Display', serif;
+  --font-alt:     'Cormorant Garamond', serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body {
+  background: var(--obsidian);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--obsidian); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.gold { color: var(--gold-light); }
+.crimson { color: var(--crimson-light); }
+.lapis { color: var(--lapis-pale); }
+.italic { font-style: italic; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.15em; }
+.small-caps { font-variant: small-caps; letter-spacing: 0.05em; }
+.center { text-align: center; }
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, #1a1208 0%, #080605 70%);
+  padding: 4rem 2rem;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-mandala {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.06;
+  animation: rotateMandala 80s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateMandala {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 960px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 0.3s;
+}
+
+.hero-title {
+  font-family: var(--font-display-dec);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ivory);
+  text-shadow: 0 0 80px rgba(201,162,39,0.3);
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeUp 1.4s ease forwards 0.6s;
+}
+
+.hero-title span.gold { text-shadow: 0 0 60px rgba(201,162,39,0.7); }
+
+.hero-subtitle {
+  font-family: var(--font-pull);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--parchment-dim);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1.4s ease forwards 0.9s;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 1.1s;
+}
+
+.hero-divider-line {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero-divider svg { width: 28px; height: 28px; fill: var(--gold); }
+
+.hero-byline {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--parchment-dim);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 1.3s;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards 2s;
+}
+
+.hero-scroll-hint span {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.scroll-chevron {
+  width: 20px;
+  height: 20px;
+  border-right: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  transform: rotate(45deg);
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 0.5; }
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+#main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(8,6,5,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,162,39,0.15);
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+
+#main-nav.visible { transform: translateY(0); }
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+  text-decoration: none;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  border-color: rgba(201,162,39,0.3);
+  background: var(--glow-gold);
+}
+
+/* ============================================================
+   PART SEPARATORS
+   ============================================================ */
+.part-banner {
+  position: relative;
+  padding: 5rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.part-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--surface) 0%, var(--obsidian) 100%);
+  z-index: 0;
+}
+
+.part-banner-content {
+  position: relative;
+  z-index: 1;
+}
+
+.part-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.part-title {
+  font-family: var(--font-display-dec);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--ivory);
+  line-height: 1.15;
+}
+
+.part-title .accent {
+  background: linear-gradient(135deg, var(--gold), var(--gold-pale));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   CHAPTER LAYOUT
+   ============================================================ */
+.chapter {
+  position: relative;
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--separator);
+}
+
+.chapter:nth-child(even) { background: var(--deep-bg); }
+.chapter:nth-child(odd)  { background: var(--obsidian); }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.container-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.chapter-header {
+  margin-bottom: 3.5rem;
+}
+
+.chapter-number {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+.chapter-subtitle {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--parchment-dim);
+}
+
+/* Decorative header line */
+.chapter-header-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.chapter-header-rule::before,
+.chapter-header-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.chapter-header-rule::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.chapter-header-rule-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
+/* ============================================================
+   BODY TEXT
+   ============================================================ */
+.body-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.body-text p {
+  margin-bottom: 1.6rem;
+  text-indent: 1.5em;
+}
+
+.body-text p:first-of-type { text-indent: 0; }
+
+.body-text p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.8em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.75;
+  margin-right: 0.1em;
+  margin-top: 0.05em;
+  color: var(--gold-light);
+  text-shadow: 0 0 30px rgba(201,162,39,0.4);
+}
+
+/* ============================================================
+   PULL QUOTES
+   ============================================================ */
+.pull-quote {
+  position: relative;
+  margin: 3rem 0;
+  padding: 2.5rem 3rem 2.5rem 4rem;
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+}
+
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-family: var(--font-pull);
+  font-size: 5rem;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.pull-quote-text {
+  font-family: var(--font-pull);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--ivory);
+}
+
+.pull-quote-attribution {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pull-quote.crimson-quote { border-left-color: var(--crimson-light); }
+.pull-quote.crimson-quote::before { color: var(--crimson-light); }
+
+/* ============================================================
+   IMAGES & FIGURES
+   ============================================================ */
+.figure {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.figure-inner {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.figure-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(201,162,39,0.2);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: sepia(20%) contrast(1.05) brightness(0.9);
+  transition: filter 0.4s ease;
+}
+
+.figure img:hover {
+  filter: sepia(10%) contrast(1.1) brightness(1.0);
+}
+
+.figure-placeholder {
+  width: 100%;
+  min-height: 280px;
+  background: linear-gradient(135deg, var(--surface), var(--surface-2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.figure-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.figure-placeholder-text {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+.figure-caption {
+  padding: 1rem 1.2rem;
+  background: var(--surface-2);
+  border-top: 1px solid var(--separator);
+}
+
+.figure-caption-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.figure-caption-text {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--parchment-dim);
+  line-height: 1.6;
+}
+
+/* Two-column figures */
+.figure-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+@media (max-width: 700px) {
+  .figure-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   ETYMOLOGY BOXES
+   ============================================================ */
+.etymology-box {
+  background: var(--surface);
+  border: 1px solid rgba(201,162,39,0.25);
+  border-radius: 2px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+.etymology-box::before {
+  content: 'ETYMOLOGY';
+  position: absolute;
+  top: -0.55rem;
+  left: 1.5rem;
+  background: var(--surface);
+  padding: 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+}
+
+.etymology-tree {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.etym-node {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  padding: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--separator);
+  position: relative;
+}
+
+.etym-node::after {
+  content: '→';
+  position: absolute;
+  right: -0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.etym-node:last-child::after { display: none; }
+
+.etym-proto {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.etym-meaning {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  margin-bottom: 0.5rem;
+}
+
+.etym-descendants {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   COMPARISON TABLE (DEVA vs ASURA)
+   ============================================================ */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3rem 0;
+  font-size: 0.92rem;
+  font-family: var(--font-body);
+}
+
+.comparison-table th {
+  padding: 1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.comparison-table th.col-vedic {
+  background: linear-gradient(135deg, #1a1608, #2a2010);
+  color: var(--gold);
+  border-bottom: 2px solid var(--gold);
+  text-align: center;
+}
+
+.comparison-table th.col-avestan {
+  background: linear-gradient(135deg, #120810, #201020);
+  color: var(--crimson-light);
+  border-bottom: 2px solid var(--crimson-light);
+  text-align: center;
+}
+
+.comparison-table th.col-deity {
+  background: var(--surface);
+  color: var(--parchment-dim);
+  border-bottom: 2px solid var(--separator);
+}
+
+.comparison-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--separator);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.comparison-table td.deity-name {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--ivory);
+  background: var(--surface-2);
+}
+
+.comparison-table td.vedic-col {
+  background: rgba(201,162,39,0.03);
+  color: var(--parchment);
+}
+
+.comparison-table td.avestan-col {
+  background: rgba(139,26,26,0.05);
+  color: var(--parchment);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-left: 0.5rem;
+}
+
+.badge-god {
+  background: rgba(201,162,39,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201,162,39,0.3);
+}
+
+.badge-demon {
+  background: rgba(139,26,26,0.15);
+  color: var(--crimson-light);
+  border: 1px solid rgba(139,26,26,0.3);
+}
+
+.badge-ahura {
+  background: rgba(43,97,153,0.15);
+  color: var(--lapis-pale);
+  border: 1px solid rgba(43,97,153,0.3);
+}
+
+.badge-daeva {
+  background: rgba(139,26,26,0.1);
+  color: var(--crimson-pale);
+  border: 1px solid rgba(139,26,26,0.2);
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+#timeline-section {
+  padding: 5rem 0;
+  background: var(--deep-bg);
+  overflow: hidden;
+}
+
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: 4rem;
+  margin-left: 0;
+  text-align: right;
+}
+
+.timeline-content {
+  width: calc(50% - 3rem);
+  margin-left: 4rem;
+  background: var(--surface);
+  border: 1px solid var(--separator);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 1.2rem;
+  width: 0;
+  height: 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  left: -8px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--separator);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+  right: -8px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid var(--separator);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--obsidian);
+  box-shadow: 0 0 12px rgba(201,162,39,0.5);
+  z-index: 1;
+  margin-top: 1.2rem;
+}
+
+.timeline-dot.crimson {
+  background: var(--crimson-light);
+  box-shadow: 0 0 12px rgba(201,64,64,0.5);
+}
+
+.timeline-dot.lapis {
+  background: var(--lapis-light);
+  box-shadow: 0 0 12px rgba(43,97,153,0.5);
+}
+
+.timeline-date {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.timeline-event {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   DEEPDIVE ACCORDIONS
+   ============================================================ */
+.deepdive {
+  margin: 2.5rem 0;
+  border: 1px solid rgba(201,162,39,0.2);
+  background: var(--surface);
+}
+
+.deepdive-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.deepdive-header:hover { background: var(--surface-2); }
+
+.deepdive-header-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.deepdive-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--gold);
+  flex-shrink: 0;
+}
+
+.deepdive-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.deepdive-chevron {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s;
+}
+
+.deepdive.open .deepdive-chevron { transform: rotate(180deg); }
+
+.deepdive-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.deepdive.open .deepdive-body { max-height: 3000px; }
+
+.deepdive-body-inner {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(201,162,39,0.15);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--parchment-dim);
+}
+
+.deepdive-body-inner p { margin-bottom: 1rem; }
+.deepdive-body-inner h4 {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* ============================================================
+   GLOSSARY
+   ============================================================ */
+.term {
+  border-bottom: 1px dashed rgba(201,162,39,0.4);
+  color: var(--gold-pale);
+  cursor: help;
+  position: relative;
+}
+
+.term:hover .term-tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-100%) translateX(-50%);
+}
+
+.term-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateY(-95%) translateX(-50%);
+  background: var(--surface-3);
+  border: 1px solid var(--gold);
+  padding: 0.75rem 1rem;
+  min-width: 220px;
+  max-width: 320px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-style: normal;
+  line-height: 1.5;
+  color: var(--text);
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.term-tooltip strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+/* ============================================================
+   SVG MAP STYLES
+   ============================================================ */
+.map-wrapper {
+  background: var(--surface);
+  border: 1px solid rgba(201,162,39,0.2);
+  margin: 3rem 0;
+  overflow: hidden;
+}
+
+.map-title-bar {
+  background: var(--surface-2);
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid var(--separator);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.map-title-bar-text {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.map-wrapper svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   INSCRIPTION BOXES
+   ============================================================ */
+.inscription-box {
+  background: var(--surface-2);
+  border: 1px solid rgba(139,26,26,0.3);
+  border-left: 3px solid var(--crimson-light);
+  padding: 2rem;
+  margin: 2.5rem 0;
+  position: relative;
+}
+
+.inscription-box::before {
+  content: 'PRIMARY SOURCE';
+  position: absolute;
+  top: -0.55rem;
+  left: 1.5rem;
+  background: var(--surface-2);
+  padding: 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  color: var(--crimson-light);
+}
+
+.inscription-text {
+  font-family: var(--font-pull);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--ivory);
+  margin-bottom: 1rem;
+}
+
+.inscription-source {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--crimson-light);
+}
+
+/* ============================================================
+   CALLOUT BOXES
+   ============================================================ */
+.callout {
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.callout-gold {
+  background: rgba(201,162,39,0.06);
+  border: 1px solid rgba(201,162,39,0.25);
+}
+
+.callout-crimson {
+  background: rgba(139,26,26,0.06);
+  border: 1px solid rgba(139,26,26,0.25);
+}
+
+.callout-lapis {
+  background: rgba(43,97,153,0.06);
+  border: 1px solid rgba(43,97,153,0.25);
+}
+
+.callout-heading {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.callout-gold .callout-heading { color: var(--gold); }
+.callout-crimson .callout-heading { color: var(--crimson-light); }
+.callout-lapis .callout-heading { color: var(--lapis-pale); }
+
+.callout p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--parchment-dim);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   SPLIT VIEW (DEVA | ASURA)
+   ============================================================ */
+.split-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 3rem 0;
+  border: 1px solid var(--separator);
+}
+
+.split-panel {
+  padding: 2rem;
+}
+
+.split-panel.gold-panel {
+  background: linear-gradient(180deg, rgba(201,162,39,0.05) 0%, transparent 100%);
+  border-right: 1px solid var(--separator);
+}
+
+.split-panel.crimson-panel {
+  background: linear-gradient(180deg, rgba(139,26,26,0.05) 0%, transparent 100%);
+}
+
+.split-panel-header {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid;
+}
+
+.gold-panel .split-panel-header {
+  color: var(--gold);
+  border-color: rgba(201,162,39,0.3);
+}
+
+.crimson-panel .split-panel-header {
+  color: var(--crimson-light);
+  border-color: rgba(139,26,26,0.3);
+}
+
+.split-panel-title {
+  font-family: var(--font-pull);
+  font-size: 1.4rem;
+  color: var(--ivory);
+  margin-bottom: 0.75rem;
+}
+
+.split-panel p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--parchment-dim);
+}
+
+@media (max-width: 700px) {
+  .split-view { grid-template-columns: 1fr; }
+  .split-panel.gold-panel { border-right: none; border-bottom: 1px solid var(--separator); }
+}
+
+/* ============================================================
+   SECTION HEADINGS WITHIN CHAPTERS
+   ============================================================ */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold-pale);
+  margin: 3rem 0 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.section-heading-small {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--parchment-dim);
+  margin: 2rem 0 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   FOOTNOTE STYLE REFERENCES
+   ============================================================ */
+.ref {
+  display: inline-block;
+  font-size: 0.65em;
+  vertical-align: super;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-left: 1px;
+}
+
+/* ============================================================
+   FARAVAHAR DECORATIVE ELEMENT
+   ============================================================ */
+.faravahar-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 2rem;
+}
+
+.faravahar-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,162,39,0.3), transparent);
+}
+
+.faravahar-divider img {
+  width: 48px;
+  height: auto;
+  opacity: 0.35;
+  filter: sepia(100%) hue-rotate(10deg) saturate(2) brightness(1.5);
+}
+
+/* ============================================================
+   FOOTNOTE SECTION
+   ============================================================ */
+.chapter-footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--separator);
+}
+
+.chapter-footnotes p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   GLOSSARY PAGE
+   ============================================================ */
+#glossary-section {
+  padding: 5rem 0;
+  background: var(--obsidian);
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.glossary-card {
+  background: var(--surface);
+  border: 1px solid var(--separator);
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.glossary-card:hover { border-color: rgba(201,162,39,0.3); }
+
+.glossary-word {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.glossary-lang {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--parchment-dim);
+  margin-bottom: 0.75rem;
+}
+
+.glossary-def {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--obsidian);
+  border-top: 1px solid var(--separator);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.footer-title {
+  font-family: var(--font-display-dec);
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--parchment-dim);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+
+.footer-ornament {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.footer-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.footer-line:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.footer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.footer-credits {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .container { padding: 0 1.5rem; }
+  .timeline::before { left: 20px; }
+  .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+  .timeline-content, .timeline-item:nth-child(odd) .timeline-content { width: 100%; margin-left: 0; margin-right: 0; text-align: left; }
+  .timeline-dot { left: 20px; }
+  .timeline-item:nth-child(odd) .timeline-content::before,
+  .timeline-item:nth-child(even) .timeline-content::before {
+    left: -8px; right: auto;
+    border-right: 8px solid var(--separator);
+    border-left: none;
+  }
+  .nav-links { display: none; }
+  .pull-quote { padding: 2rem 1.5rem 2rem 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     NAVIGATION
+     ======================================== -->
+<nav id="main-nav">
+  <div class="nav-brand">Dividing the Gods</div>
+  <div class="nav-links">
+    <a href="#part1">Origins</a>
+    <a href="#part2">The Schism</a>
+    <a href="#part3">The Mirror</a>
+    <a href="#part4">World Echoes</a>
+    <a href="#part5">Modern Age</a>
+    <a href="#timeline-section">Timeline</a>
+    <a href="#glossary-section">Glossary</a>
+  </div>
+</nav>
+
+<!-- ========================================
+     HERO
+     ======================================== -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <svg class="hero-mandala" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="250" cy="250" r="240" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="250" r="200" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="250" r="160" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="250" r="120" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="250" r="80" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="250" r="40" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <!-- Radial lines -->
+    <line x1="250" y1="10" x2="250" y2="490" stroke="#c9a227" stroke-width="0.3"/>
+    <line x1="10" y1="250" x2="490" y2="250" stroke="#c9a227" stroke-width="0.3"/>
+    <line x1="80" y1="80" x2="420" y2="420" stroke="#c9a227" stroke-width="0.3"/>
+    <line x1="420" y1="80" x2="80" y2="420" stroke="#c9a227" stroke-width="0.3"/>
+    <line x1="40" y1="160" x2="460" y2="340" stroke="#c9a227" stroke-width="0.2"/>
+    <line x1="160" y1="40" x2="340" y2="460" stroke="#c9a227" stroke-width="0.2"/>
+    <line x1="460" y1="160" x2="40" y2="340" stroke="#c9a227" stroke-width="0.2"/>
+    <line x1="340" y1="40" x2="160" y2="460" stroke="#c9a227" stroke-width="0.2"/>
+    <!-- Inner star -->
+    <polygon points="250,50 280,190 420,190 310,275 355,420 250,340 145,420 190,275 80,190 220,190" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <!-- Small circles on ring -->
+    <circle cx="250" cy="50" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="250" cy="450" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="50" cy="250" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="450" cy="250" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="120" cy="120" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="380" cy="120" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="120" cy="380" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <circle cx="380" cy="380" r="4" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <!-- Zoroastrian-style winged motif hint -->
+    <path d="M 180,250 Q 200,230 250,235 Q 300,230 320,250 Q 300,265 250,260 Q 200,265 180,250 Z" fill="none" stroke="#c9a227" stroke-width="0.8"/>
+    <path d="M 150,250 Q 160,225 200,220 Q 230,215 250,225 L 250,235" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+    <path d="M 350,250 Q 340,225 300,220 Q 270,215 250,225" fill="none" stroke="#c9a227" stroke-width="0.5"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">An Expanded Historical Magnum Opus</p>
+    <h1 class="hero-title">
+      Dividing the<br><span class="gold">Gods</span>
+    </h1>
+    <p class="hero-subtitle">The Indo-Iranian Schism and Its Echoes Through History</p>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="3" fill="#c9a227"/>
+        <circle cx="12" cy="12" r="7" fill="none" stroke="#c9a227" stroke-width="1"/>
+        <line x1="12" y1="2" x2="12" y2="5" stroke="#c9a227" stroke-width="1"/>
+        <line x1="12" y1="19" x2="12" y2="22" stroke="#c9a227" stroke-width="1"/>
+        <line x1="2" y1="12" x2="5" y2="12" stroke="#c9a227" stroke-width="1"/>
+        <line x1="19" y1="12" x2="22" y2="12" stroke="#c9a227" stroke-width="1"/>
+      </svg>
+      <div class="hero-divider-line"></div>
+    </div>
+    <p class="hero-byline">By Ojas Padalkar &nbsp;&#x2022;&nbsp; Full Expanded Edition</p>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <span>Scroll to Begin</span>
+    <div class="scroll-chevron"></div>
+  </div>
+</section>
+
+<!-- ========================================
+     PREFACE: THE ASSYRIAN ANECDOTE
+     ======================================== -->
+<section class="chapter" id="preface" style="background: var(--deep-bg);">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Preface</span>
+      <h2 class="chapter-title">Misunderstandings Across Time</h2>
+      <p class="chapter-subtitle">An Assyrian Anecdote as Prologue</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>History often hides ironies in plain sight. Consider the "Assyrian" identity, a name resurrected in the 19th century by outsiders and eagerly adopted by local communities, despite its ancient bearers having vanished long ago. In the 1840s, British explorer Austen Henry Layard excavated the ruins of ancient Assyria along the upper Tigris, encountering local Nestorian and Chaldean Christian groups who spoke varieties of Neo-Aramaic and had practiced their faith in remote mountain fastnesses for centuries. Mistakenly believing these Aramaic-speaking Christians to be the direct biological and cultural descendants of the vanished Assyrian empire, Layard popularized the idea that they were "Assyrians." American and Anglican missionaries soon reinforced this notion, introducing concepts of nationhood and encouraging these communities to identify with Assyria's storied past. They built schools, printed texts, and wrote histories that placed these mountain Christians in a direct line from Ashurbanipal and Sennacherib. By the late 19th century, a nationalist awakening saw these Christians revive the term Āthorāyā (Assyrian) as their self-designation, building a new national pride around the ancient Assyrian empire rather than their traditional church sects.</p>
+
+      <p>Over time, even the church itself was renamed. What had been known simply as the Nestorian Church of the East was rebranded in the 1970s as the "Assyrian Church of the East," cementing the new identity in ecclesiastical stone. This modern Assyrian narrative, born from a translation error, missionary re-interpretation, and cultural pride, is a cautionary tale of how easily historical truth can be distorted. A name plucked from antiquity was applied to a people with a different heritage, creating a proud national story that, strictly speaking, rests on a misidentification.</p>
+
+      <p>This phenomenon of misrepresented truth is not unique. Throughout history, cultures have reinterpreted and even demonized each other's heritage due to linguistic confusion, political agendas, or theological rivalry. In the chapters that follow, we journey back several millennia to examine one of the most profound examples of such a divergence: the ancient <span class="term">Indo-Iranian<span class="term-tooltip"><strong>Indo-Iranian</strong>The branch of the Proto-Indo-European family that gave rise to both the Vedic (Sanskrit) and Iranian (Avestan, Old Persian) language groups. Also called Aryan from the self-designation Arya.</span></span> peoples, forebears of the Vedic Indians and the Avestan Zoroastrian Iranians, who took the same set of ancestral gods and split them into opposing camps of "devas" and "asuras" (or "ahuras").</p>
+
+      <p>We will see how deep cultural misunderstandings and subtle shifts in meaning turned one group's gods into the other's demons, and vice versa. Along the way, we will trace their common origin, explore how translation quirks and sectarian pride fed this mutual demonization, and compare it with similar splits in other traditions: from Norse myths to Mesopotamian lore, from the Jewish exile in Babylon to the illuminated manuscripts of medieval Persia. The goal is to unveil how a shared ancient legacy was reframed into a tale of good versus evil, and to understand the philosophical consequences that echo in Hinduism, Zoroastrianism, Buddhism, and beyond.</p>
+
+      <p>This is a story of divided gods. It is a historical narrative about how one people's deity became another's devil, and what that reveals about truth and misunderstanding in human tradition. It is also, ultimately, a story about ourselves.</p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p class="pull-quote-text">A name plucked from antiquity was applied to a people with a different heritage, creating a proud national story that rests on a misidentification. The same alchemy, we shall discover, transfigured gods into demons across the breadth of the ancient world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PART I BANNER
+     ======================================== -->
+<div class="part-banner" id="part1">
+  <div class="part-banner-content">
+    <p class="part-number">Part One</p>
+    <h2 class="part-title">
+      <span class="accent">Genesis</span> of a Shared World
+    </h2>
+    <p style="font-family: var(--font-alt); font-style: italic; color: var(--parchment-dim); margin-top: 1rem; font-size: 1.05rem;">From the proto-Indo-European steppe to the banks of the Indus and the Oxus</p>
+  </div>
+</div>
+
+<!-- ========================================
+     CHAPTER 1: A COMMON ANCESTRY
+     ======================================== -->
+<section class="chapter" id="ch1">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter One</span>
+      <h2 class="chapter-title">A Common Ancestry</h2>
+      <p class="chapter-subtitle">The Proto-Indo-European Dawn and the Steppe Homeland</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>Long before the Indo-Iranian divide, there was a larger family to which both Iranians and Indo-Aryan Indians belonged: the <span class="term">Proto-Indo-Europeans<span class="term-tooltip"><strong>Proto-Indo-Europeans (PIE)</strong>The hypothetical ancestral people who spoke Proto-Indo-European, the reconstructed ancestor of a language family spanning from Ireland to India. Most evidence places them in the Pontic-Caspian steppe c. 4000-3000 BCE.</span></span>. Around five to six thousand years ago, on the windswept steppes north of the Black Sea and east toward the Caspian, where the Pontic steppe merges into the Kazakh grasslands, proto-Indo-European tribes worshipped sky gods, divine powers of nature, and sacred concepts of cosmic order. Theirs was a world of immense sky and rolling grass, of horses and cattle, of rivers thick with fish and storms that could kill a man in an open field.</p>
+
+      <p>These were the people known to archaeology primarily through the <span class="term">Yamnaya culture<span class="term-tooltip"><strong>Yamnaya</strong>An archaeological horizon (c. 3300-2600 BCE) across the Pontic-Caspian steppe. Characterized by kurgan burials, pastoral nomadism, use of wheeled vehicles, and pastoralism. Genomic studies confirm they are a major ancestral population for Indo-Europeans across Eurasia.</span></span> of approximately 3300 to 2600 BCE, a pastoral society recognizable in the archaeological record by its distinctive burial practice: the kurgan, a burial mound heaped with earth over a pit grave, within which a chieftain might be interred with a wagon, weapons of bronze or copper, animal bones, and ochre pigment. The kurgans dot the Eurasian steppe from Ukraine to Kazakhstan like frozen waves, each one a frozen moment of reverence, a community's last act of witness for someone they believed mattered to the cosmos.</p>
+    </div>
+
+    <div class="figure reveal">
+      <div class="figure-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/IE_expansion.png/1200px-IE_expansion.png"
+             alt="Map of Indo-European migrations from the Pontic steppe"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="figure-placeholder" style="display:none;">
+          <div class="figure-placeholder-icon">🗺</div>
+          <div class="figure-placeholder-text">Indo-European Migration Map<br><span style="opacity:0.7;">Arrows tracing spread from Pontic steppe homeland</span></div>
+        </div>
+      </div>
+      <div class="figure-caption">
+        <div class="figure-caption-title">The Indo-European Migrations</div>
+        <p class="figure-caption-text">Reconstructed migration routes of Indo-European peoples from the Pontic-Caspian steppe heartland radiating outward from approximately 4000 BCE. The southeastern branch, the Proto-Indo-Iranians, would eventually bifurcate into the Indo-Aryans of the Indian subcontinent and the Iranian peoples of the plateau. Their shared religious heritage would eventually be torn in two, with each side demonizing the other's gods.</p>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>What made the Proto-Indo-Europeans so consequential was not merely their genes but their technology and ideas. By approximately 3500 BCE, they had domesticated the horse for riding, a revolutionary transformation that extended the range a human community could effectively manage, enabling rapid movement across vast territories. Around the same time, or shortly after, the wheel was in use on the steppe, and oxen-drawn wheeled vehicles enabled not just warfare but the movement of entire communities and their herds. This combination of mobile logistics and mounted scouting created the conditions for one of history's most consequential population movements. DNA studies in the 21st century have confirmed what linguists long suspected: a massive Yamnaya-related expansion carried Proto-Indo-European language and culture from the steppe into Europe to the west and into South Asia to the southeast. The genetic signal is undeniable, a steppe ancestry component appearing in Bronze Age skeletons across Scandinavia, the British Isles, Anatolia, and South Asia alike.</p>
+
+      <p>Among their many descendants, a branch known as the <span class="term">Proto-Indo-Iranians<span class="term-tooltip"><strong>Proto-Indo-Iranians</strong>The common ancestral group of the Indo-Aryan and Iranian peoples, flourishing c. 2300-1800 BCE in the Central Asian steppe and the BMAC interaction zone. Their language is the reconstructed ancestor of Sanskrit and Avestan.</span></span> emerged, likely around the 3rd to 2nd millennium BCE in the Central Asian steppe region between the Urals and the Aral Sea. This branch would give rise to two sibling cultures: the Indo-Aryans, who migrated southeast into the Indian subcontinent, and the Iranians, who moved southwest onto the Iranian plateau. Though destined to follow different paths, these sister peoples began with a common cultural and religious heritage, a fact that is absolutely crucial to understanding their later misunderstandings.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The Sintashta Culture and the World's First Chariots</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>Sintashta-Petrovka (c. 2100-1800 BCE)</h4>
+          <p>The most archaeologically vivid window into the Proto-Indo-Iranian world is the Sintashta culture, located in the southern Ural steppes of modern Russia and Kazakhstan. Sintashta settlements were remarkable: fortified towns of up to 40 enclosed structures arranged in an oval or rectangle around a central street, surrounded by walls of timber-reinforced earthen or stone construction with external ditches. Sintashta, the type site, was roughly 160 meters in diameter and contained perhaps 40 to 50 households. It was not a city in the Mesopotamian sense, but it was organized, defended, and clearly the product of collective labor guided by some form of social authority.</p>
+          <p>What makes Sintashta world-historically significant is its burial record. In the kurgan cemeteries associated with these settlements, archaeologists have found what David Anthony and others have identified as the world's oldest certain chariots. These were not the solid-wheel carts of Sumerian origin, but true spoke-wheeled war chariots: lightweight vehicles with spoked wheels, designed to be pulled at speed by horses trained in pairs with a specialized bit. The chariots were buried with their horses and drivers, along with bronze weapons including axes, daggers, and socketed spearheads. Some burials include cheekpieces for horse bits made of bone or antler, the first clear evidence of horse-drawn vehicular control designed for battle.</p>
+          <h4>Military Implications</h4>
+          <p>The war chariot was to the Bronze Age what the tank was to the 20th century: a platform that combined mobility, shock, and psychological terror. A chariot driven by a trained pair of horses could achieve speeds of 25-30 miles per hour in short bursts, carrying an archer who could loose arrows with devastating accuracy while remaining largely invulnerable to foot soldiers without specialized weapons. The spread of chariot warfare from the steppe across the Near East and South Asia in the 2nd millennium BCE was rapid and transformative. The Hittites deployed them at Kadesh; the Egyptians adopted them against the Hyksos; and the Indo-Aryans may have used them in their movements into the Indian subcontinent.</p>
+          <p>The Sintashta people were also prolific metallurgists, mining copper from the southern Ural region and producing bronze arsenical alloys that were technically superior to much contemporary Near Eastern metalwork. Finds include casting molds, slag heaps, and finished weapons in quantities suggesting organized production rather than craft production. In their burial mounds, we find the portrait of a martial aristocracy: men buried with full weapon sets, women with elaborate ornaments, and sacrificed horses and cattle accompanying the dead into the afterlife.</p>
+          <h4>Religious Continuity</h4>
+          <p>The religious practices reflected in Sintashta burials show unmistakable connections to both later Vedic and Zoroastrian traditions. Horse sacrifice (aśvamedha in Sanskrit, yasna in Avestan) is attested archaeologically. The preparation of a ritual drink, likely a precursor to Vedic soma and Avestan haoma, is inferred from botanical finds in some contexts, including traces of ephedra and hemp. Fire altars or ritual hearths appear in some settlements. The dead are buried with careful attention to orientation, often east-west aligned, suggesting cosmological significance to celestial direction. When we read the Rigveda's hymns about the great horse sacrifice or the Gathas' mention of fire ritual, we are hearing echoes that trail back to Sintashta.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">The Sacred Vocabulary: Two Words That Divided a World</h3>
+
+    <div class="body-text reveal">
+      <p>One striking testament to the shared origin of the Indo-Iranians lies in the very words they used for "god" and "lord." Linguists reconstruct two key terms in Proto-Indo-Iranian (and ultimately Proto-Indo-European) religious vocabulary: <em>daywás</em> (from PIE <em>deywós</em>) and <em>hásuras</em> (from PIE <em>h₂nsuros</em> or <em>ansu-</em>). These two words would eventually become the axis around which an entire theological schism revolved.</p>
+
+      <p>The first term, <em>deywós</em>, carried the evocative meaning of "a celestial being," literally a shining one, related to words for the sky and brightness. The root is connected to PIE <em>*dyew-</em>, meaning "sky" or "to shine," and it is cognate to Latin <em>deus</em>, Old Norse <em>Týr</em>, and English <em>divine</em>. In Sanskrit this became <em>deva</em>; in Avestan, <em>daeva</em>. Both words are phonologically identical up to a regular sound shift: the <em>v</em> in Sanskrit corresponds to a <em>v</em> in Avestan, but the <em>d</em> in Sanskrit corresponds to a <em>d</em> in Avestan too, so the divergence was semantic, not phonological. The <em>same word</em> in two sister languages came to mean "god" in one and "demon" in the other.</p>
+    </div>
+
+    <div class="etymology-box reveal">
+      <div class="etymology-tree">
+        <div class="etym-node">
+          <div class="etym-proto">PIE *deywós</div>
+          <div class="etym-meaning">"shining one, celestial being"</div>
+          <div class="etym-descendants">also: Latin deus, Norse Týr, Lith. dievas</div>
+        </div>
+        <div class="etym-node">
+          <div class="etym-proto">Proto-Indo-Iranian *daywás</div>
+          <div class="etym-meaning">"shining god (generic)"</div>
+          <div class="etym-descendants">The neutral ancestral term for any divine being</div>
+        </div>
+        <div class="etym-node" style="border-color: var(--gold);">
+          <div class="etym-proto" style="color:var(--gold)">Sanskrit: DEVA</div>
+          <div class="etym-meaning">"god" (positive)</div>
+          <div class="etym-descendants">Used for the bright gods of the Vedic pantheon</div>
+        </div>
+        <div class="etym-node" style="border-color: var(--crimson-light);">
+          <div class="etym-proto" style="color:var(--crimson-light)">Avestan: DAEVA</div>
+          <div class="etym-meaning">"false god, demon"</div>
+          <div class="etym-descendants">Demonized by Zarathustra's reform</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etymology-box reveal" style="margin-top: 2rem;">
+      <div class="etymology-tree">
+        <div class="etym-node">
+          <div class="etym-proto">PIE *h₂nsuro-</div>
+          <div class="etym-meaning">"lord, powerful life-giver"</div>
+          <div class="etym-descendants">also: Proto-Gmc. *ansuz → Old Norse Aesir</div>
+        </div>
+        <div class="etym-node">
+          <div class="etym-proto">Proto-Indo-Iranian *hásuras</div>
+          <div class="etym-meaning">"mighty lord (among gods)"</div>
+          <div class="etym-descendants">Originally a title of majesty for the greatest gods</div>
+        </div>
+        <div class="etym-node" style="border-color: var(--crimson-light);">
+          <div class="etym-proto" style="color:var(--crimson-light)">Sanskrit: ASURA</div>
+          <div class="etym-meaning">"demon, anti-god"</div>
+          <div class="etym-descendants">Gradually demonized in post-Vedic tradition</div>
+        </div>
+        <div class="etym-node" style="border-color: var(--gold);">
+          <div class="etym-proto" style="color:var(--gold)">Avestan: AHURA</div>
+          <div class="etym-meaning">"holy lord" (positive)</div>
+          <div class="etym-descendants">Elevated to highest honor; Ahura Mazda = Wise Lord</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>Crucially, these were not two utterly opposed categories but rather a hierarchy within the divine. The <em>hásuras</em> were understood as a subset of the <em>daywáses</em>: in simple terms, the lords among the gods. All asuras/ahuras were by definition also devas/daevas since they were a class of high gods, but not all devas were asuras. Only the mightiest ones, the chiefs and rulers of cosmos, earned that title of "lord." This layered concept is vividly paralleled in other Indo-European traditions.</p>
+
+      <p>The Old Norse speakers, distant cousins of the Indo-Iranians, used <em>tívar</em> (cognate to <em>deva</em>, meaning any god in the generic sense) alongside <em>Æsir</em> (cognate to <em>asura</em>, meaning the powerful lord-gods) for the leading tribe of gods like Odin and Thor. The word <em>Týr</em> (singular of <em>tívar</em>) designated a specific sky-god who had once been the supreme deity before Odin's ascendancy, preserving in his very name and diminished role the ancient hierarchy: the "shining one" (tiva/deva type) had been surpassed by the "powerful lord" (Aesir/asura type). Even the Hittites of Anatolia retained a related idea: their word <em>ḫaššu</em> (from the same root as asura) came to mean "king," implying a ruler vested with divine life-or-death authority. The king was the earthly asura, the human embodiment of divine lordship.</p>
+
+      <p>In India's oldest scriptures, the echoes of this primordial usage survive with crystalline clarity. The Rigveda, the most ancient of the Vedas, calls the sky and ocean god <span class="term">Varuṇa<span class="term-tooltip"><strong>Varuṇa</strong>One of the most august Vedic deities, guardian of cosmic order (ṛta), all-seeing lord of the waters, punisher of falsehood. His Iranian cognate is arguably Ahura Mazda himself, who absorbed Varuṇa's attributes of omniscience and cosmic law.</span></span> an Asura in the loftiest sense: "O Varuṇa, thou art sovereign over all, be they Devas or Asura or mortals." In another hymn, the dual gods <span class="term">Mitra<span class="term-tooltip"><strong>Mitra / Mithra</strong>God of covenants and the sun, honored on both sides of the divide. Sanskrit Mitra and Avestan Mithra are cognate. In India he is a deva; in Iran he is classed as an Ahura. Later, Mithraism spread as a mystery cult through the Roman Empire.</span></span> and Varuṇa are praised together as "Asuras of the Devas," meaning lords of the gods. These passages show the original high esteem of the term Asura: far from a demon, an Asura was a divine monarch, a guardian of cosmic order standing above lesser gods.</p>
+    </div>
+
+    <div class="callout callout-gold reveal">
+      <p class="callout-heading">Key Insight</p>
+      <p>The word "asura" began as <em>praise</em>, not condemnation. The great sky-god Varuṇa, the sun-covenant Mitra, the fire Agni: all are called Asuras in the oldest Vedic hymns, as titles of honor. The same root that became Sanskrit's word for "demon" was, in Iran, elevated to the name of God Himself: Ahura Mazda, "the Wise Lord." This inversion, identical words traveling in opposite moral directions, is perhaps the most dramatic semantic reversal in the history of religion.</p>
+    </div>
+
+    <h3 class="section-heading reveal">The Sky Father and the Ancestral Pantheon</h3>
+
+    <div class="body-text reveal">
+      <p>Among their pantheon, scholars reconstruct a <span class="term">Sky Father<span class="term-tooltip"><strong>Dyēus Ph₂tēr</strong>The reconstructed Proto-Indo-European sky god, whose name survives in Sanskrit Dyaus Pitṛ, Greek Zeus Pater, Latin Jupiter, and the Illyrian Dei-paturos. He ruled the daylight heavens and was a guarantor of oaths.</span></span>, <em>Dyēus Ph₂tēr</em>, ruling the daylight heavens; an Earth Mother, his consort; divine twins associated with horses and healing; a storm-bringer who slays a cosmic serpent or dragon to release the waters; and a host of nature spirits. The word for a deity itself was <em>deiwos</em>, meaning a shining one or celestial being, a term that survives in Sanskrit <em>deva</em>, Avestan <em>daeva</em>, Latin <em>deus</em>, and Norse <em>Týr</em>. Alongside it was another sacred title, <em>h₂nsu-</em> or <em>ansu-</em>, later "asura/ahura," which implied might, authority, or lordship.</p>
+
+      <p>The cosmological framework was one of cosmic order against chaos, truth against falsehood. The PIE term for cosmic order, reconstructed as <em>*h₂értus</em>, survives as Sanskrit <em>ṛta</em> and Avestan <em>aša</em>. This principle was not merely a moral code but the very fabric of reality: the path of the sun, the cycle of the seasons, the keeping of oaths, the proper conduct of sacrifice. Its opposite was <em>druh-</em> or <em>druj-</em>, falsehood and chaos, the force that would unravel existence if left unchecked. Both the Rigveda and the Gathas treat this opposition as the fundamental axis of the cosmos, suggesting that the ethical binary of truth versus the lie is one of the oldest exports of the Proto-Indo-Iranian mind.</p>
+
+      <p>The sacred drink, reconstructed as <em>*sauma-</em>, was central to Indo-Iranian religion from its earliest recoverable form. Whether a preparation of the Ephedra plant (found in BMAC site botanical assemblages), the Amanita muscaria mushroom (proposed by R. Gordon Wasson), or another psychotropic plant substance, it was ritually prepared and consumed in ceremonies of communion with the divine. In India it became <span class="term">Soma<span class="term-tooltip"><strong>Soma / Haoma</strong>The sacred ritual drink central to both Vedic and Zoroastrian religion. The same plant-derived substance, venerated in both traditions though known by slightly different names (Sanskrit soma, Avestan haoma). Its precise botanical identity remains debated.</span></span>; in Iran it became <em>Haoma</em>. Both the personification and the ritual preparation survive in both traditions with remarkable fidelity, an unambiguous marker of their common origin.</p>
+    </div>
+
+    <!-- PIE STEPPE MAP SVG -->
+    <div class="map-wrapper reveal">
+      <div class="map-title-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span class="map-title-bar-text">The Proto-Indo-European Steppe Homeland and Migration Vectors (c. 3500-1500 BCE)</span>
+      </div>
+      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="background:#0d0b08; padding:1rem;">
+        <!-- Simplified geographic outlines -->
+        <!-- Caspian Sea -->
+        <ellipse cx="480" cy="180" rx="22" ry="50" fill="#1a3a5c" opacity="0.7"/>
+        <text x="490" y="180" font-family="Cinzel,serif" font-size="7" fill="#2b6199" opacity="0.8">Caspian</text>
+        <!-- Black Sea -->
+        <ellipse cx="330" cy="160" rx="55" ry="25" fill="#1a3a5c" opacity="0.7"/>
+        <text x="298" y="163" font-family="Cinzel,serif" font-size="7" fill="#2b6199" opacity="0.8">Black Sea</text>
+        <!-- Aral Sea -->
+        <ellipse cx="580" cy="150" rx="20" ry="15" fill="#1a3a5c" opacity="0.6"/>
+        <text x="558" y="148" font-family="Cinzel,serif" font-size="6" fill="#2b6199" opacity="0.7">Aral Sea</text>
+
+        <!-- STEPPE HOMELAND zone -->
+        <path d="M 280 120 Q 350 100 460 110 Q 560 115 640 130 Q 640 200 560 210 Q 460 215 380 210 Q 300 200 280 170 Z"
+              fill="rgba(201,162,39,0.08)" stroke="rgba(201,162,39,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="380" y="165" font-family="Cinzel,serif" font-size="9" fill="#c9a227" opacity="0.9" text-anchor="middle">PONTIC-CASPIAN STEPPE</text>
+        <text x="380" y="178" font-family="EB Garamond,serif" font-size="8" fill="#a89878" text-anchor="middle" font-style="italic">PIE Homeland c. 3500 BCE</text>
+
+        <!-- Yamnaya kurgan symbols -->
+        <polygon points="390,140 393,133 396,140" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <polygon points="420,135 423,128 426,135" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <polygon points="455,138 458,131 461,138" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <polygon points="490,136 493,129 496,136" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <polygon points="520,140 523,133 526,140" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <text x="400" y="127" font-family="EB Garamond,serif" font-size="6" fill="#a89878" opacity="0.7" font-style="italic">▲ Kurgan burials</text>
+
+        <!-- ARROW to India (Indo-Aryan) -->
+        <path d="M 550 200 Q 620 230 680 280 Q 730 340 760 400"
+              fill="none" stroke="#c9a227" stroke-width="2" stroke-dasharray="6,3"
+              marker-end="url(#arrowgold)"/>
+        <!-- Label -->
+        <text x="700" y="360" font-family="Cinzel,serif" font-size="8" fill="#c9a227" opacity="0.9" transform="rotate(-45, 700, 360)">Indo-Aryans</text>
+        <text x="715" y="370" font-family="EB Garamond,serif" font-size="7" fill="#a89878" font-style="italic" transform="rotate(-45, 715, 370)">c. 1800-1500 BCE</text>
+
+        <!-- ARROW to Iran (Iranian) -->
+        <path d="M 530 210 Q 560 260 580 310 Q 600 360 620 390"
+              fill="none" stroke="#e8c84a" stroke-width="1.5" stroke-dasharray="5,3"
+              marker-end="url(#arrowgold2)"/>
+        <text x="585" y="370" font-family="Cinzel,serif" font-size="8" fill="#e8c84a" opacity="0.9">Iranians</text>
+        <text x="582" y="380" font-family="EB Garamond,serif" font-size="7" fill="#a89878" font-style="italic">c. 2000-1500 BCE</text>
+
+        <!-- ARROW to Europe -->
+        <path d="M 320 150 Q 260 160 200 170 Q 140 180 80 190"
+              fill="none" stroke="#4a7fa8" stroke-width="1.5" stroke-dasharray="5,3"
+              marker-end="url(#arrowblue)"/>
+        <text x="130" y="205" font-family="Cinzel,serif" font-size="8" fill="#4a7fa8" opacity="0.9">Europe</text>
+
+        <!-- ARROW to Anatolia -->
+        <path d="M 310 165 Q 290 180 270 195 Q 250 210 230 220"
+              fill="none" stroke="#4a7fa8" stroke-width="1.2" stroke-dasharray="4,3"
+              marker-end="url(#arrowblue)"/>
+        <text x="215" y="235" font-family="Cinzel,serif" font-size="7" fill="#4a7fa8" opacity="0.8">Anatolia</text>
+
+        <!-- Sintashta location -->
+        <circle cx="600" cy="130" r="8" fill="none" stroke="rgba(201,162,39,0.7)" stroke-width="1.5"/>
+        <circle cx="600" cy="130" r="3" fill="rgba(201,162,39,0.5)"/>
+        <text x="608" y="128" font-family="Cinzel,serif" font-size="7" fill="#c9a227" opacity="0.9">Sintashta</text>
+        <text x="607" y="136" font-family="EB Garamond,serif" font-size="6" fill="#a89878" font-style="italic">c. 2100 BCE</text>
+
+        <!-- BMAC label -->
+        <rect x="630" y="250" width="55" height="22" fill="rgba(139,26,26,0.1)" stroke="rgba(139,26,26,0.3)" stroke-width="0.8"/>
+        <text x="657" y="260" font-family="Cinzel,serif" font-size="7" fill="#c94040" text-anchor="middle">BMAC Zone</text>
+        <text x="657" y="268" font-family="EB Garamond,serif" font-size="6" fill="#a89878" text-anchor="middle" font-style="italic">Interaction zone</text>
+
+        <!-- INDUS label -->
+        <text x="760" y="415" font-family="Cinzel,serif" font-size="8" fill="#c9a227" opacity="0.7">→ Indus Valley</text>
+        <!-- IRAN label -->
+        <text x="625" y="400" font-family="Cinzel,serif" font-size="8" fill="#e8c84a" opacity="0.7">→ Iranian Plateau</text>
+
+        <!-- Defs for arrows -->
+        <defs>
+          <marker id="arrowgold" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M 0 0 L 6 3 L 0 6 Z" fill="#c9a227"/>
+          </marker>
+          <marker id="arrowgold2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M 0 0 L 6 3 L 0 6 Z" fill="#e8c84a"/>
+          </marker>
+          <marker id="arrowblue" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M 0 0 L 6 3 L 0 6 Z" fill="#4a7fa8"/>
+          </marker>
+        </defs>
+
+        <!-- Legend -->
+        <rect x="20" y="350" width="200" height="65" fill="rgba(13,11,8,0.8)" stroke="rgba(201,162,39,0.2)" stroke-width="0.8"/>
+        <text x="30" y="365" font-family="Cinzel,serif" font-size="7" fill="#c9a227" opacity="0.9">LEGEND</text>
+        <line x1="30" y1="372" x2="50" y2="372" stroke="#c9a227" stroke-width="2" stroke-dasharray="5,2"/>
+        <text x="55" y="375" font-family="EB Garamond,serif" font-size="7" fill="#a89878">Indo-Aryan migration</text>
+        <line x1="30" y1="385" x2="50" y2="385" stroke="#e8c84a" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="55" y="388" font-family="EB Garamond,serif" font-size="7" fill="#a89878">Iranian migration</text>
+        <line x1="30" y1="398" x2="50" y2="398" stroke="#4a7fa8" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="55" y="401" font-family="EB Garamond,serif" font-size="7" fill="#a89878">European migrations</text>
+        <polygon points="30,407 33,400 36,407" fill="none" stroke="rgba(201,162,39,0.6)" stroke-width="0.8"/>
+        <text x="42" y="411" font-family="EB Garamond,serif" font-size="7" fill="#a89878">Kurgan burial site</text>
+      </svg>
+    </div>
+
+    <div class="body-text reveal">
+      <p>As archaeologist David Anthony describes in meticulous detail, these migrations spanned the steppes and beyond: one branch moved southeast into the Indian subcontinent forming the Vedic Aryans, while another moved southwest toward Iran and formed the Iranian Aryans. By the mid-2nd millennium BCE, the steppe nomads of the Sintashta-Petrovka culture, likely Proto-Indo-Iranians, were forging weapons and the world's first true chariots. They became the conduit of a shared heritage that would later split into two of antiquity's great spiritual traditions: the Vedic religion of India and the Iranian religion of Zoroaster.</p>
+
+      <p>Yet at this dawn of the Indo-Iranian world, those future divisions were unknown. The early Indo-Iranians presumably worshipped a pantheon inherited from their forebears: a sky god, sun and moon, fire, wind, and water deities, and figures analogous to <span class="term">Mitra<span class="term-tooltip"><strong>Mitra/Mithra</strong>The most diplomatically attested of the shared Indo-Iranian gods, appearing in the Mitanni treaties (c. 1380 BCE), the Rigveda, and the Avesta. God of contracts, sunlight, and friendship. His cult eventually spread as far as Roman Britain.</span></span>, Varuṇa, Indra, and the Twin Horsemen (Nasatya/Aśvins), names that later echo across the Vedas and the Avesta. They spoke of <em>ṛta</em> or <em>aša</em>, the cosmic order upheld by truth, a principle so profound it survived in both Sanskrit and Avestan as the very fabric of morality and reality. Sacrifices of fire and soma/haoma were performed to commune with the divine. In this primordial stage, "deva" was simply a god and "asura" (or ahura in Iranian) meant a powerful lord, perhaps a subset of gods revered for their might or wisdom. There was no absolute moral dichotomy inherent in the terms.</p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p class="pull-quote-text">As one comparative study notes, in the earliest Vedic texts all supernatural beings, bright or dark, could be called devas or asuras without implying one was inherently good or evil. It was a time of ambiguous divinity, when gods could be both beneficent and wrathful, and cosmic dualism had not yet cleaved the pantheon in two.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CHAPTER 2: THE INDO-IRANIAN BROTHERHOOD
+     ======================================== -->
+<section class="chapter" id="ch2">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Two</span>
+      <h2 class="chapter-title">Twin Children of the Proto-Indo-Europeans</h2>
+      <p class="chapter-subtitle">The Indo-Iranian Brotherhood, Shared Myths and a World Almost Never Divided</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>As centuries passed, the Indo-Iranian tribes settled into their new homelands: some in the fertile river plains of India, others amid the highlands, oases, and arid plateaus of Iran and Central Asia. They remained cognizant of being one people, calling themselves <span class="term">Arya<span class="term-tooltip"><strong>Arya (Sanskrit) / Airya (Avestan)</strong>"Noble" or "of good family." The shared self-designation of both the Vedic Indo-Aryans and the ancient Iranians. The word was an ethnocultural marker, not a racial one, though later European racial science catastrophically distorted its meaning.</span></span>, "noble," even as dialects and customs slowly diverged. Their religions at this stage were essentially one tradition in different locales.</p>
+
+      <p>We can imagine wandering priests and bards who, had they met, would recognize each other's hymns. Both realms revered the supreme order of <em>ṛta/aša</em>: the Rigveda praises <em>ṛta</em> as the truth that sustains sun and moon, while the Avesta upholds <em>aša</em> as the divine law of righteousness. Both traditions personified this order in gods: Vedic Varuṇa is called "King of Asura, upholder of ṛta," while Avestan Ahura Mazda is described as "maintainer of aša." The two religions are singing the same song in slightly different keys.</p>
+    </div>
+
+    <div class="figure-grid reveal">
+      <div class="figure">
+        <div class="figure-inner">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Rigveda_MS2097.jpg/800px-Rigveda_MS2097.jpg"
+               alt="Rigveda manuscript folio"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-placeholder" style="display:none; min-height:200px;">
+            <div class="figure-placeholder-icon">📜</div>
+            <div class="figure-placeholder-text">Rigveda Manuscript<br><span style="opacity:0.6;">Sanskrit text, c. 1200 BCE</span></div>
+          </div>
+        </div>
+        <div class="figure-caption">
+          <div class="figure-caption-title">The Rigveda</div>
+          <p class="figure-caption-text">The oldest text of Vedic Sanskrit (c. 1500-1200 BCE), composed in the region of the northwestern Indian subcontinent. Its 1,028 hymns preserve the earliest recoverable Indo-Iranian religious thought, including the most archaic usages of "asura" as a title of honor.</p>
+        </div>
+      </div>
+      <div class="figure">
+        <div class="figure-inner">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Faravahar.svg/400px-Faravahar.svg.png"
+               alt="Faravahar, the Zoroastrian symbol of Ahura Mazda"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="figure-placeholder" style="display:none; min-height:200px;">
+            <div class="figure-placeholder-icon">☀</div>
+            <div class="figure-placeholder-text">The Faravahar<br><span style="opacity:0.6;">Zoroastrian symbol of Ahura Mazda, Persepolis</span></div>
+          </div>
+        </div>
+        <div class="figure-caption">
+          <div class="figure-caption-title">The Faravahar of Persepolis</div>
+          <p class="figure-caption-text">The winged solar disc with a human figure, the Faravahar, is the most iconic symbol of Zoroastrianism. Representing Ahura Mazda or the divine fravashi (guardian spirit), it adorns the rock-cut tombs at Naqsh-e Rostam and the great audience hall at Persepolis. This symbol would have been utterly incomprehensible to a Vedic Indian who recognized in "Ahura" the word for "demon."</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">The Mirror of the Gods: Shared Deities, Divergent Fates</h3>
+
+    <div class="body-text reveal">
+      <p>Many specific deities were shared with only slight name changes. The Vedic duo <span class="term">Mitra-Varuṇa<span class="term-tooltip"><strong>Mitra-Varuṇa</strong>The divine pair who together uphold cosmic and social order in the Rigveda. Mitra governs contracts and daylight; Varuṇa governs the night sky, waters, and the enforcement of oaths with his cosmic noose. Their Avestan counterparts are Mithra and Apąm Napāt/the divine order of Ahura Mazda.</span></span> (faithful oath-keeper and expansive king of waters) corresponds to the Avestan Mithra and Apąm Napāt and Vouruna (genius of covenants and the waters). The Vedic fire-god <span class="term">Agni<span class="term-tooltip"><strong>Agni / Atar</strong>The fire god, present in both Vedic (Agni) and Avestan (Atar) religion. Fire in both traditions is sacred, a mediating presence between humans and the divine realm, the recipient of offerings. Zoroastrianism elevated fire to a symbol of Ahura Mazda's divine light; it never became a deity to be worshipped as such, though fire temples became central to Zoroastrian practice.</span></span> has his Iranian twin in Atar (fire). The plant-drink deity Soma in India is Haoma in Iran: both the personification of a sacred elixir that grants vision and vitality.</p>
+
+      <p>Even the sun and dawn deities arise in tandem. The Vedic Sun, Sūrya, and Dawn, Uṣas, parallel the Iranian Hvare (sun) and Ushah. And not least, the great divine feminine manifests as Sarasvatī in the Rigveda and as Arədvī Sūrā Anāhitā in the Avesta, each a lofty river-goddess bestowing life, eloquence, and fertility. These correspondences are no coincidence but evidence of a common inheritance. Indo-Iranian comparative studies reveal shared fundamental concepts: the idea of a cosmic mountain (Axis Mundi), with the mythical Mount Meru in Sanskrit matching Harā Bərəzaitī in Avestan lore. Both envisioned the world divided into seven realms or regions surrounded by a ring of mountains, a memory of an older Indo-Iranian cosmography.</p>
+    </div>
+
+    <!-- SHARED DEITIES COMPARISON TABLE -->
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-deity">Divine Domain</th>
+            <th class="col-vedic">Vedic India (Sanskrit)</th>
+            <th class="col-avestan">Zoroastrian Iran (Avestan)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="deity-name">Cosmic Order / Truth</td>
+            <td class="vedic-col"><strong>Ṛta</strong> — the principle sustaining sun, moon, moral law. Upheld by Varuṇa. <span class="status-badge badge-god">Central</span></td>
+            <td class="avestan-col"><strong>Aša</strong> — divine truth and righteousness. The supreme principle upheld by Ahura Mazda. Its enemy is Druj (the Lie). <span class="status-badge badge-ahura">Supreme</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Fire God</td>
+            <td class="vedic-col"><strong>Agni</strong> — messenger between gods and humans; recipient of sacrifice; god of the hearth, the priest's altar flame, and the cremation pyre. <span class="status-badge badge-god">Revered</span></td>
+            <td class="avestan-col"><strong>Atar</strong> — sacred fire, symbol of Ahura Mazda's divine light; not precisely a deity but the divine presence itself. Fire temples built around eternal flames. <span class="status-badge badge-ahura">Sacred Symbol</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Covenant God / Sun</td>
+            <td class="vedic-col"><strong>Mitra</strong> — of Mitra-Varuṇa pair; guardian of contracts and daytime; one of the Ādityas (solar gods). <span class="status-badge badge-god">Honored</span></td>
+            <td class="avestan-col"><strong>Mithra</strong> — keeper of covenants, god of the sun and light; EXPLICITLY called Ahura on occasion; survived Zoroaster's reforms intact; later spawned Roman Mithraism. <span class="status-badge badge-ahura">Honored</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Waters / Cosmic Law</td>
+            <td class="vedic-col"><strong>Varuṇa</strong> — all-seeing lord of the cosmic waters, upholder of ṛta, wielder of the noose of fate; called Asura in positive sense. Later recedes to ocean god. <span class="status-badge badge-god">Honored → Diminished</span></td>
+            <td class="avestan-col">Attributes absorbed by <strong>Ahura Mazda</strong>; water personified as <strong>Anāhitā</strong> (Arədvī Sūrā Anāhitā), goddess of all waters. <span class="status-badge badge-ahura">Transformed</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Storm / War / Thunder</td>
+            <td class="vedic-col"><strong>Indra</strong> — king of the Devas, slayer of Vṛtra the serpent, liberator of waters; divine champion; consumes great amounts of soma. <span class="status-badge badge-god">Champion</span></td>
+            <td class="avestan-col"><strong>Indra / Indar</strong> — explicitly listed as a chief DAEVA in the Vendidad (Vidēvdāt 10.9); demon of apostasy. His victorious function absorbed by <strong>Verethragna</strong>. <span class="status-badge badge-daeva">Demonized</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Sacred Drink</td>
+            <td class="vedic-col"><strong>Soma</strong> — ritual entheogen, pressed at ceremonies; also deified as the Moon's ambrosia; entire Mandala IX of Rigveda devoted to it. <span class="status-badge badge-god">Sacred</span></td>
+            <td class="avestan-col"><strong>Haoma</strong> — same plant-substance, same preparation ritual; survives in Zoroastrian ceremony to this day. The Gathas' condemnation likely targeted abuse by corrupt priests, not the plant itself. <span class="status-badge badge-ahura">Preserved</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Twin Horsemen / Healers</td>
+            <td class="vedic-col"><strong>Aśvins (Nasatyas)</strong> — divine twin horsemen, physicians of the gods; rescuers of the distressed; associated with dawn. <span class="status-badge badge-god">Beloved</span></td>
+            <td class="avestan-col"><strong>Nāñhaithya (= Nāsatya)</strong> — explicitly listed as a DAEVA in Vendidad. The twin horsemen demonized. <span class="status-badge badge-daeva">Demonized</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">River / Feminine Divine</td>
+            <td class="vedic-col"><strong>Sarasvatī</strong> — sacred river goddess; patroness of eloquence, wisdom, arts; later merged with Brahma's consort and goddess of learning. <span class="status-badge badge-god">Revered</span></td>
+            <td class="avestan-col"><strong>Arədvī Sūrā Anāhitā</strong> — mighty, pure, immaculate; goddess of all waters and fertility; one of the most prominent yazatas (beings worthy of worship). <span class="status-badge badge-ahura">Revered</span></td>
+          </tr>
+          <tr>
+            <td class="deity-name">Victory / Heroism</td>
+            <td class="vedic-col"><strong>Indra</strong> (as above) — victory achieved through his great battles. <span class="status-badge badge-god">Champion</span></td>
+            <td class="avestan-col"><strong>Verethragna</strong> — Iranian god of victory; name means "Smiter of Resistance" (cognate to Vṛtra-slaying). Indra's positive function transferred to this figure. <span class="status-badge badge-ahura">Honored</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="body-text reveal">
+      <p>Crucially, early Indo-Iranian religion did not pit its gods against each other as inherently good or evil. On the contrary, they preserved a hierarchical but fluid view. The term asura/ahura seems to have been a title of honor, "lord," applied to certain great gods among the devas/daevas ("gods" generally). To put it simply, all asuras were also devas (gods), but not all gods qualified as exalted lords. The kingly Varuṇa, for instance, is called an Asura who rules over both gods and mortals in Rigveda 2.27.10. Likewise Mitra and Varuṇa together are lauded as "Asuras of the devas," lords among the gods. This usage has striking parallels in other Indo-European traditions: in Old Norse, the generic word for gods <em>tívar</em> (cognate to deva) coexisted with a special term Æsir (cognate to asura) for the chief gods like Odin and Thor, the high rulers of Asgard. In Hittite, similarly, the cognate <em>ḫaššu</em> came to mean a supreme ruler or king, again reflecting that an "asura-type" term denoted elevated authority.</p>
+
+      <p>All this suggests that the Indo-Iranians originally saw devas and asuras not as opposing camps but as overlapping categories: the asuras/ahuras were the senior gods, embodiments of regal power and guardian wisdom, while the devas/daevas were gods at large, shining ones upholding the cosmos. No hint of demons or moral dualism colored these words at the outset.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The Mitanni Kingdom — Indo-Iranian Gods in a Mesopotamian Treaty</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The Mitanni Connection (c. 1400 BCE)</h4>
+          <p>One of the most startling pieces of evidence for the pre-schism unity of the Indo-Iranians comes not from India or Iran at all, but from Syria. Around 1380 BCE, the Mitanni kingdom of northern Mesopotamia (centered in modern northern Syria and southeastern Turkey) negotiated a peace treaty with the Hittite empire. The treaty was sealed with oaths invoking divine witnesses, and among the gods called upon to guarantee the treaty are names unmistakably from the Indo-Iranian tradition: Mi-it-ra (Mitra), U-ru-wa-na (Varuṇa), In-da-ra (Indra), and Na-sa-at-ti-ia (Nasatya). The Mitanni royal family bore names like Artatama, Artashumara, Tushratta, and Biriwaza, all containing the Indo-Iranian root <em>arta-</em> (cognate to Sanskrit <em>ṛta</em> and Avestan <em>aša</em>).</p>
+          <p>The Mitanni were not themselves fully Indo-Aryan: they ruled over a largely Hurrian-speaking population and were eventually assimilated. But the ruling elite spoke an Indo-Aryan language and observed Indo-Aryan religious forms. A Mitanni horse-training manual from this period, the Kikkuli text written in Cuneiform, uses technical Indo-Aryan terms for counting the laps in horse-training circuits: aika (one), tera (three), panza (five), satta (seven), na (nine). These are unmistakably Sanskrit cognates.</p>
+          <h4>What the Mitanni Tell Us</h4>
+          <p>The Mitanni evidence is invaluable because it is independent of both the Vedic and Avestan traditions. It gives us a snapshot of what Indo-Iranian religion looked like before it diverged fully into the Vedic and Zoroastrian streams, preserved in amber in a foreign diplomatic context. In this snapshot, Mitra, Varuṇa, Indra, and the Nasatyas are all present as honored gods, none of them demons. The treaty was probably made in the first half of the 14th century BCE, by which point the Rigveda's composition was underway but before Zarathustra's reform. The Mitanni are literally witnessing the world before the schism crystallized.</p>
+          <p>Furthermore, the presence of <em>arta-</em> (cosmic order) in Mitanni royal names shows that the concept of Ṛta/Aša was already fundamental to Indo-Iranian royal ideology at this early date. The kings were named "Righteous" or "He who has the appearance of Arta," indicating that the cosmic order principle was not just a priestly abstraction but a royal legitimating ideology. This would become even more important as the Achaemenid Persians later claimed divine approval from Ahura Mazda specifically as guardians of Asha (truth/order) against the Lie.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">Shared Ritual: Fire, Soma, and the Axis of Heaven</h3>
+
+    <div class="body-text reveal">
+      <p>The most viscerally shared aspect of Indo-Iranian religion was its ritual life. Both traditions centered on two rites that have left deep marks in the archaeological and textual record: the fire sacrifice and the preparation and consumption of the sacred plant-drink.</p>
+
+      <p>The fire altar (<em>yajna</em> in Sanskrit, <em>yasna</em> in Avestan) was the axis around which the Indo-Iranian world turned. Fire was not merely a convenient medium for cooking offerings; it was the divine presence itself, the intermediary between the human and divine realms. When a priest kindled the ritual fire and fed it oblations of clarified butter (<em>ghee</em>), grain, and the sacred drink, he was not merely performing a ceremony but literally feeding the gods, sustaining the cosmic order. The Vedic fire god Agni himself, as priest and messenger, carried the offerings upward in his smoke to the divine realm. In the Zoroastrian tradition, the sacred fire (Atar) burning in a fire temple represents Ahura Mazda's divine light made present in the world, and its perpetual maintenance was a religious obligation of the highest order.</p>
+
+      <p>Archaeological evidence from the BMAC (Bactria-Margiana Archaeological Complex), the cultural zone in modern Uzbekistan, Turkmenistan, and northern Afghanistan that flourished from about 2400 to 1700 BCE, shows large fire installations and altars consistent with the fire-sacrifice tradition. Some BMAC sites have yielded botanical remains including Ephedra and Cannabis, consistent with the preparation of a psychoactive plant-drink in the context of large communal ceremonies. The BMAC was the likely interaction zone where Proto-Indo-Iranian religious practice took a more defined shape before the two streams diverged. It is also possible that the Indo-Iranians absorbed elements from BMAC religion, including particular plant-substances and architectural forms for fire temples.</p>
+
+      <p>Within this shared framework, the morality of the gods was complex. The same deity could bless or punish. Varuṇa, solemn lord of law, could be compassionate to devotees but also inflict diseases on oath-breakers. Indra, the storm-god, was celebrated for slaying the dragon Vṛtra and releasing the waters, a heroic act of cosmic order, yet he was also known for his ferocious appetite for soma and occasional impulsive deeds. Such ambiguity was accepted. As the Bhagavad Gītā later philosophizes, all beings have both daiva (divine) and asura (demonic) qualities within them, a reflection of an ancient recognition that good and evil are intertwined in the self. Thus, early on, an "Asura" was not a fiend but a potential within the divine order.</p>
+    </div>
+
+    <div class="callout callout-lapis reveal">
+      <p class="callout-heading">The BMAC Intersection</p>
+      <p>The Bactria-Margiana Archaeological Complex (BMAC), flourishing c. 2400-1700 BCE in modern Uzbekistan and Turkmenistan, has been called the "interaction zone" between Indo-Iranian migrants from the steppe and established agricultural civilizations. Fortified rectangular settlements like Gonur Depe in modern Turkmenistan show massive fire-altar complexes consistent with Indo-Iranian sacred fire practice. BMAC ceramic tradition, with distinctive geometric painted decoration and distinctive compartmented seals, shows elements later replicated in both Vedic and Zoroastrian artistic traditions. Michael Witzel has argued that the BMAC represents an early stage of the convergence that produced both Vedic and Avestan religions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PART II BANNER
+     ======================================== -->
+<div class="part-banner" id="part2" style="background: radial-gradient(ellipse at center, #1a0808 0%, var(--obsidian) 100%);">
+  <div class="part-banner-content">
+    <p class="part-number">Part Two</p>
+    <h2 class="part-title">
+      The <span class="accent">Great Divergence</span>
+    </h2>
+    <p style="font-family: var(--font-alt); font-style: italic; color: var(--crimson-pale); margin-top: 1rem; font-size: 1.05rem;">How the same words came to mean opposite things across the breadth of the ancient world</p>
+  </div>
+</div>
+
+<!-- ========================================
+     CHAPTER 3: THE VEDIC PATH
+     ======================================== -->
+<section class="chapter" id="ch3">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Three</span>
+      <h2 class="chapter-title">The Vedic Path</h2>
+      <p class="chapter-subtitle">Devas and Asuras in Early Indian Tradition</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>In the lands of the Indus and the Gangetic plain, the Indo-Aryans' religion blossomed into what we call the Vedic tradition, flourishing from approximately 1500 to 500 BCE. They composed hymns (<em>śruti</em>, "that which is heard") in praise of a pantheon of Devas: sky gods, storm gods, solar deities, dawn maidens, hearth fire, and sacred soma. These hymns were not written down for centuries; they were memorized in their thousands of verses with extraordinary precision, transmitted from generation to generation through an elaborate mnemonic training that required young Brahmin students to repeat each word forward and backward, in every possible combination, to ensure not a syllable was altered. The Vedic oral tradition is perhaps the greatest feat of human memory in history, and it preserved not just words but an entire world of Indo-Iranian cosmological thought.</p>
+
+      <p>In these earliest texts, <em>deva</em> simply meant god, and <em>asura</em> still bore its old honorific sense of mighty lord. Varuṇa, as we saw, is extolled as an Asura, as are Mitra, Agni, and other high gods in various hymns. The Vedic asura was not a fiend but a beneficent patriarch. Varuṇa, for instance, was revered as the upholder of <em>ṛta</em> (cosmic order and truth), wielding a just rod of punishment for oath-breakers and sinners. He surveys all the world from his palace above the heavens, his spies (the stars, perhaps) watching every action of every person, and his cosmic noose (<em>pāśa</em>) ensnares those who violate the truth. He is awesome, austere, and just; a god before whom even the pious tremble and beg forgiveness for unwitting transgressions. In this portrayal, Varuṇa is every inch an Asura in the most exalted sense: a great lord whose authority is total and whose knowledge is complete.</p>
+    </div>
+
+    <div class="inscription-box reveal">
+      <p class="inscription-text">"O Varuṇa, whatever law of thine we have violated as men, have mercy, Asura, have mercy." — Rigveda, hymn addressed to Varuṇa, one of many in which the great god is invoked by his Asura title in the most reverential of contexts.</p>
+      <p class="inscription-source">Rigveda — The Ancient Vedic Hymns, c. 1500-1200 BCE</p>
+    </div>
+
+    <div class="body-text reveal">
+      <p>Yet even as these hymns were being compiled, subtle shifts were underway. Later portions of the Vedic literature, the Brāhmaṇas (liturgical prose texts) and beyond, transitioning into the epic and Purāṇic era, show asura taking on a more negative coloration. How did this happen? One theory suggests a semantic misunderstanding: ancient Brahmin commentators, puzzling over archaic verses, might have mis-segmented the word <em>asura</em> as <em>a-sura</em>, interpreting it as "non-sura," literally "not a god." In Sanskrit, as in Avestan, the prefix <em>a-</em> is a negator (like "un-" or "non-"). Thus, an innocent initial <em>a</em> in asura was mistaken for a prefix, leading those scholars to declare that an "asura" must be something opposed to a sura (deva). The brilliant simplicity of this mistake is matched only by its historical consequences.</p>
+
+      <p>This clever but flawed etymology gained traction. Priestly authors started to use <em>sura</em> as a new word for "god" to contrast with asura. In later myths and commentaries, asuras were gradually cast as the anti-gods, cruel, power-hungry beings in perpetual conflict with the Devas. Importantly, this was not a sudden satanization of any beloved deity. No formerly revered Vedic god was outright condemned. Revered figures like Varuṇa or Mitra quietly shed the title "Asura" and were simply counted among the Devas thereafter. The new Asuras that populate post-Vedic myth, including Hiraṇyakaśipu, the father of Prahlāda, the demon king Rāvaṇa of the Rāmāyaṇa, the ocean-churning rivals of the gods, are often drawn not from earlier worshipped gods but from the ranks of exotic or purely mythic beings. In other words, the term Asura was reassigned: it came to denote a class of formidable but malevolent beings, often synonymous with Daitya (descendants of the primordial mother Diti) or Dānava (offspring of Danu) in the mythology.</p>
+
+      <p>Other folk etymologies also circulated. Some Purāṇas explain that the Asuras got their name because they rejected the sacred drink sura (wine or the elixir of immortality) during the churning of the ocean, thus "a-sura" meaning "those without sura." Another explanation was that early Sanskrit grammarians, noticing the word sura ("bright, alcoholic drink") and asura, invented the false etymology that asura meant "non-sura (non-god)." Indeed, one theory holds that learned Brahmins consciously stopped calling holy gods "Asura," using "Sura" or Deva instead for positive beings, and relegated Asura to describe only hostile, anti-god forces. This scholastic tweak, if it occurred, was not born of any direct conflict with Iranians: it was an internal linguistic logic that snowballed into a theological change.</p>
+    </div>
+
+    <div class="figure reveal">
+      <div class="figure-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Samudra_Manthan.jpg/1280px-Samudra_Manthan.jpg"
+             alt="The Samudra Manthan - Churning of the Ocean of Milk"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="figure-placeholder" style="display:none; min-height:220px;">
+          <div class="figure-placeholder-icon">🌊</div>
+          <div class="figure-placeholder-text">Samudra Manthan<br><span style="opacity:0.6;">The Churning of the Ocean of Milk — Devas and Asuras cooperate in cosmic creation</span></div>
+        </div>
+      </div>
+      <div class="figure-caption">
+        <div class="figure-caption-title">Samudra Manthan (The Churning of the Ocean)</div>
+        <p class="figure-caption-text">In one of Hindu mythology's most famous episodes, the Devas and Asuras cooperate by using Mount Mandara as a churning rod and Vasuki the serpent as a rope to churn the cosmic ocean for the nectar of immortality (amṛta). This myth, in its portrayal of the two camps as uneasy partners in cosmic creation, preserves a memory of the original kinship between deva and asura, before the moral polarity was absolute. The Asuras help create the nectar, but the Devas ultimately obtain it through divine stratagem.</p>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">The Great Moral Complexity of the Vedic World</h3>
+
+    <div class="body-text reveal">
+      <p>By the end of this evolution (around the late Vedic or early epic period), Indian texts clearly distinguish the <em>surās</em> (gods) from the <em>asurās</em> (demons). The Mahābhārata and Purāṇas narrate cosmic battles between Devas and Asuras, analogous to the Greek Olympians versus Titans. And yet, these stories often carry an undertone that the dichotomy is not absolute. Asuras, though antagonists, are still part of the divine play. Even in outright war, Indian myth sometimes blurs the moral lines. Asuras can display virtues like courage, scholarship, and even devotion (Bhakti) to other deities, while Devas are not free from vice. The king of gods Indra is notorious for pride and occasional folly, sometimes committing acts in the epics for which he must suffer consequences. The god of love Kama distracts the meditating Shiva and pays for it with his life. Brahma creates in error. Even the greatest gods err.</p>
+
+      <p>The philosophical ethos of Hinduism does not paint the gods as infallibly good nor the demons as pure evil. Rather, both are subject to the three <span class="term">guṇas<span class="term-tooltip"><strong>Guṇas (Sanskrit)</strong>The three fundamental qualities or constituents of nature in Hindu philosophy: sattva (purity, clarity, goodness), rajas (energy, passion, activity), and tamas (inertia, darkness, ignorance). All beings are composed of these three in varying proportions, which determine their nature, actions, and spiritual trajectory.</span></span> (qualities of nature), including sattva (goodness), rajas (passion), and tamas (dark inertia), in varying mixes. Devas tend toward sattva but still falter with pride or desire; Asuras lean into rajas and tamas yet can occasionally perform austere penances or noble deeds. Goodness (dharma) and wickedness (adharma) ultimately are individual choices, not innate birthrights of one class of beings. Only the supreme reality (whether called Vishnu, Shiva, or Brahman) is beyond these dualities; all others, deva or asura, can rise or fall on the wheel of <em>samsāra</em>.</p>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p class="pull-quote-text">One scholar puts it with crystalline clarity: the Vedic titan (Asura) is potentially an angel (Deva), the angel still by nature a titan. In Hindu understanding, these are not fixed identities but dynamic potentials, fluid positions on the great wheel of becoming.</p>
+      <p class="pull-quote-attribution">after Ananda Coomaraswamy, on the Asura-Deva relationship in Hindu thought</p>
+    </div>
+
+    <div class="body-text reveal">
+      <p>This non-dual acknowledgment of shades of gray is perhaps a direct result of a worldview that did not externalize all evil into a separate set of beings. Yes, there were demons and anti-gods in stories, but philosophically, Hinduism often brought the discussion back to overcoming the demonic within: greed, anger, pride. The Upanishadic tale of Indra and the Asura Virochana jointly seeking the knowledge of the Self from Prajāpati is a brilliant allegory. Both the god and the demon initially lack understanding; the god persists, asks questions, and refines his knowledge (a positive quality), whereas the demon takes the first answer at face value and leaves, using it arrogantly, thus failing to attain truth. The moral is subtle: being a "Deva" or "Asura" is an attitude, not an intrinsic identity. Hinduism thereby kept the door of redemption open. Even Asuras could become wise or devote themselves to God. Mahābali, an Asura king, is promised liberation by Vishnu; the demon king Rāvaṇa, though villainous, is also seen as a great devotee of Lord Śiva in some traditions.</p>
+
+      <p>Buddhism, emerging in India around the 5th century BCE, interestingly took a stance somewhat akin to Zoroastrianism in one aspect: it systematized the cosmos into distinct realms of rebirth, including a Deva realm (gods) and an Asura realm (jealous, warlike demigods). In Buddhist cosmology, Asuras are explicitly characterized by envy and belligerence, perpetually fighting the Devas out of resentment. Although Buddhism does not assign cosmic moral evil to the Asuras (they are just another class of unenlightened beings), it does label them as "titans" consumed by negative emotions. In some Buddhist texts, Asuras are even called <em>pūrvadeva</em> ("former gods"), implying they fell from grace, a notion that resonates with the idea that Asuras were once on par with gods, indeed a faint memory of the ancient meaning. But Buddhist tradition, true to its middle path, does not eternalize the dualism: an Asura can be reborn as a human or even a deva once their karma changes, and vice versa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CHAPTER 4: THE AVESTAN REVOLUTION
+     ======================================== -->
+<section class="chapter" id="ch4">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Four</span>
+      <h2 class="chapter-title">The Avestan Revolution</h2>
+      <p class="chapter-subtitle">Zarathustra's Reform and the Making of Zoroastrianism</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>Meanwhile, on the Iranian plateau and in Central Asia, the Iranic branch of the Indo-Iranians was experiencing its own religious evolution. By roughly 1200 to 1000 BCE (dates are vigorously debated, with some scholars placing Zarathustra as early as 1500 BCE and others as late as 600 BCE), a spiritual reformer arose among them known to history as <span class="term">Zarathustra<span class="term-tooltip"><strong>Zarathustra / Zoroaster</strong>The prophet of the ancient Iranian religion, whose hymns (the Gathas) form the oldest core of the Avesta. The Greek form "Zoroaster" comes through a garbled transmission. His dates are debated: c. 1200-1000 BCE in the older scholarly tradition, or perhaps as late as the 7th-6th century BCE according to others.</span></span> (or Zoroaster in Greek). He preached a bold new theology that would become Zoroastrianism, one of the world's oldest prophetic religions and arguably the world's first to articulate ethical dualism as its central cosmic principle.</p>
+
+      <p>To understand Zarathustra's impact, we must first appreciate the religious milieu he inherited. The pre-Zoroastrian Iranians worshipped a pantheon much like the Vedic one: they venerated daevas (gods) and ahuras (lords) just as their ancestors did. For a time, it seems Ahura was simply a title of honor. The Iranian god Mithra (cognate to Vedic Mitra) could be called an ahura in early usage, and there were likely other figures similar to Varuṇa upholding covenant and order. But at some point before or during Zarathustra's life, a decisive shift occurred: the term Daeva (daēuua in Avestan) became associated with false gods or demons.</p>
+
+      <p>The Avesta (Zoroastrian scriptures) portrays the Daevas as malevolent beings who "through their blindness chose the Worst Mind" and turned away from righteousness. They are depicted as worthy of rejection and scorn, followers of the Lie (druj). On the other hand, Ahura was reserved for the highest divinities of the Zoroastrian faith, foremost <span class="term">Ahura Mazda<span class="term-tooltip"><strong>Ahura Mazda</strong>"The Wise Lord." The supreme deity of Zoroastrianism, uncreated and all-knowing, source of all that is good. His name appears to preserve the Asura title (ahura = lord) combined with Mazda (wisdom). His Vedic equivalent in many attributes is Varuṇa.</span></span>, the "Wise Lord," exalted creator and source of all good. Alongside him stood the six Amesha Spentas (Holy Immortals): Vohu Manah (Good Mind), Aša Vahišta (Best Truth), Xšaθra Vairya (Desirable Dominion), Spənta Ārmaiti (Holy Devotion), Haurvatāt (Wholeness), and Amərətāt (Immortality). These were not separate gods so much as aspects or emanations of Ahura Mazda's goodness, hypostatized virtues through which the divine interacted with creation.</p>
+    </div>
+
+    <div class="figure reveal">
+      <div class="figure-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Naqsh-e_Rostam_Bahram_II.jpg/1280px-Naqsh-e_Rostam_Bahram_II.jpg"
+             alt="Naqsh-e Rostam rock carvings with Faravahar above"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="figure-placeholder" style="display:none; min-height:260px;">
+          <div class="figure-placeholder-icon">🏛</div>
+          <div class="figure-placeholder-text">Naqsh-e Rostam<br><span style="opacity:0.6;">Royal Achaemenid tombs with Faravahar above — Ahura Mazda's eternal symbol</span></div>
+        </div>
+      </div>
+      <div class="figure-caption">
+        <div class="figure-caption-title">Naqsh-e Rostam, Fars Province, Iran</div>
+        <p class="figure-caption-text">The rock-cut tombs of the Achaemenid kings (Darius I, Xerxes I, Artaxerxes I, Darius II) at Naqsh-e Rostam are carved into the cliff face overlooking the plain of Persepolis. Above each tomb, the Faravahar symbol of Ahura Mazda watches over the royal dead. These kings were simultaneously the most powerful rulers on earth and the self-styled warriors of Ahura Mazda against Angra Mainyu's cosmic lie. Xerxes' famous daiva inscription was found not far from this site.</p>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">Zarathustra's Hymns: The Gathas as Sacred Poetry</h3>
+
+    <div class="body-text reveal">
+      <p>The oldest Zoroastrian texts are the Gathas, seventeen hymns attributed directly to Zarathustra himself. Written in a dialect of Avestan so archaic that it is almost contemporaneous in form with the oldest Rigvedic Sanskrit, the Gathas are remarkable literary documents. They are not narrative myth but visionary poetry of great personal intensity: a prophet wrestling with his god, calling for divine guidance, lamenting the violence of his world, and describing his vision of a cosmic order based on truth versus the lie. In the Gathas, Zarathustra speaks directly to Ahura Mazda in the second person with an intimacy that has no obvious parallel in the Rigveda.</p>
+
+      <p>What strikes the reader of the Gathas is how Zarathustra frames the fundamental moral choice facing every conscious being. In his cosmology, at the beginning of existence, two primal Spirits, one holy and one destructive, made a choice. The holy spirit (Spənta Mainyu) chose truth, life, and goodness; the hostile spirit (Angra Mainyu) chose the Lie and destruction. This primordial bifurcation mirrors what happened linguistically to the deva/asura terminology: one path led to the divine, the other to the demonic. And crucially, humans are called to make the same choice in their own lives with their own thoughts, words, and deeds.</p>
+
+      <p>Zoroaster never names a single Daeva explicitly in the Gathas. He speaks of them collectively with contempt, but we do not find statements like "Indra is a demon" in the oldest hymns. This suggests that when Zarathustra began preaching, the term daeva was already heading toward a negative connotation, or at least was controversial. His reform might have accelerated an existing trend: perhaps some Iranian communities had started preferring the worship of Ahuras (like Mitra and Varuṇa-equivalents) over other daeva-gods, and seeing those other gods as morally suspect. Under this scenario, Zarathustra gave the final theological justification, proclaiming that those daevas really were demons, delighting in chaos and violence, and that henceforth true religion must reject them entirely.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The Vendidad — Indra and the Nasatyas as Listed Demons</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The Vidēvdāt (Vendidad) — The Law Against Demons</h4>
+          <p>The Vendidad (a corruption of Vidēvdāt, "the law given against the demons") is one of the most important but also most polemical texts in the Zoroastrian Avesta. Written considerably later than the Gathas in form and content, it represents a codification of Zoroastrian ritual law, purity rules, and demonology. It is in the Vendidad that we find the most explicit naming of demonized deities who were honored by the Indo-Aryans.</p>
+          <p>Vendidad 10.9 lists the chief demons of the Zoroastrian pantheon. Among them, with unmistakable transparency, are:</p>
+          <p><strong>Indra (Avestan: Indar or Indra)</strong> — Yes, the great champion of the Rigveda, the Soma-drinking storm-god and dragon-slayer of the Vedic tradition, appears here as a chief Daeva. In Zoroastrian tradition, Indra is the demon of apostasy, one who leads the faithful away from the righteous path. The theological reasoning is clear: Indra represents the violent, intoxicated warrior archetype that Zarathustra found morally repugnant. In his reform, which emphasized peaceful agriculture, honest craft, and truth-telling over raiding and feasting, a god who embodied the drunken warrior's ethos was anathema. The Gathas themselves condemn the cattle-raiding culture associated with warriors (kavis and karapans), and Indra with his soma-drunk battlefield valor was the perfect symbol of everything Zarathustra opposed.</p>
+          <p><strong>Saurva (= Sanskrit Śarva, an epithet of Rudra)</strong> — Śarva is one of the eight names of Rudra in the Śatarudriya hymn of the Yajurveda. His Avestan counterpart Saurva is cast as a demon of misrule, representing arbitrary violence and chaos. This demonization reflects a pattern: the more violent and unpredictable aspects of the Indo-Iranian pantheon were singled out by Zoroaster.</p>
+          <p><strong>Nāñhaithya (= Sanskrit Nāsatya, one of the Aśvin twins)</strong> — The Aśvins (Nasatyas) were among the most beloved healing deities of the Vedic tradition, divine physicians who rescue humans from disaster and disease. In the Mitanni treaty they appear as Nasatya. In Zoroastrian demonology, their counterpart Nāñhaithya is a demon of arrogance and discontent. The demonization of the healer twins is particularly striking and may reflect specific features of the Aśvin cult (including associations with horse sacrifice or particular ecstatic rituals) that Zoroaster found incompatible with his ethical reform.</p>
+          <h4>Why These and Not Others?</h4>
+          <p>A crucial insight emerges from this list: the Zoroastrian reform did NOT demonize all Indo-Iranian deities. Mithra survived and flourished as an Ahura. Anāhitā (the Iranian Sarasvatī) became one of the most popular Yazatas (beings worthy of worship). Verethragna (the Victory god) absorbed Indra's positive functions. The selective nature of the demonization tells us something important about Zarathustra's reform: he was not attacking all of the old religion but specifically targeting those deities associated with the warrior aristocracy's excesses (cattle-raiding, intoxication, gratuitous violence) that he saw as destructive to the pastoral, agricultural community he championed.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">Zoroastrian Dualism: The Architecture of a New Cosmos</h3>
+
+    <div class="body-text reveal">
+      <p>Zarathustra's hymns describe a primordial choice made by the twin Spirits: one chose truth, light, and life; the other chose deceit, darkness, and destruction. This metaphysical drama put <span class="term">Ahura Mazda<span class="term-tooltip"><strong>Ahura Mazda</strong>"The Wise Lord," supreme Zoroastrian deity. Uncreated, all-good, all-knowing. Represented by light and fire. His cosmic antagonist is Angra Mainyu (the Hostile Spirit), who is equally uncreated but entirely evil. This makes Zoroastrianism a form of dualism unique in the ancient world.</span></span> and <span class="term">Angra Mainyu<span class="term-tooltip"><strong>Angra Mainyu / Ahriman</strong>"The Hostile Spirit" or "Destructive Mentality." The supreme evil principle of Zoroastrianism, leader of the Daevas and all demonic forces. Not quite equal to Ahura Mazda in ultimate power (since good will triumph), but terrifyingly potent. He introduced death, disease, and all evil into creation.</span></span> at odds from the dawn of time. While Ahura Mazda (called Ohrmazd in later Middle Persian) was the uncreated Creator of all that is good, Angra Mainyu (Ahriman) was the uncreated source of evil, not equal in power (for ultimately good will triumph), but terrifyingly potent in the current age.</p>
+
+      <p>All the Ahuric beings (the Yazata gods and angels like Mithra, Anāhitā, Sraosha, and the Amesha Spentas) rally under Mazda's banner, and all demonic forces (the Daevas and druj) serve Ahriman. Humans must choose whom to follow, through their thoughts, words, and deeds. Righteousness (aša/arta) aligns one with Mazda, whereas the Lie (druj) leads to Ahriman. Life itself became a moral battleground: every honest act was literally supporting the good gods against the evil ones.</p>
+
+      <p>This vivid cosmology spurred Zoroastrians to emphasize purity, of mind through truthfulness, of body through ritual cleanliness. They abhorred daeva-worship as the epitome of ignorance and sin. Herodotus, the Greek historian who traveled through Persia in the 5th century BCE, writes that the Persians had no idols or temples for the old gods, a reflection of the iconoclasm in Zoroaster's reform. The historian notes with evident curiosity that the Persians conducted their religious ceremonies not in temples with cult images but outdoors at high places or before sacred fires, a practice that baffled the image-worshipping Greeks.</p>
+    </div>
+
+    <div class="inscription-box reveal">
+      <p class="inscription-text">"And among these lands there was a place where previously the daivas were worshipped. By the favor of Ahura Mazda, I destroyed that sanctuary of the daivas, and I proclaimed: 'The daivas shall not be worshipped!' Where previously the daivas had been worshipped, there I worshipped Ahura Mazda with Arta the Exalted."</p>
+      <p class="inscription-source">The Daiva Inscription of Xerxes I (XPh), Persepolis, c. 486-480 BCE. Old Persian cuneiform on limestone. This royal decree is one of the most direct historical records of the theological schism between the Ahuras and Daevas made into official state policy.</p>
+    </div>
+
+    <div class="body-text reveal">
+      <p>The daiva inscription of King Xerxes, carved in Old Persian cuneiform at Persepolis, is one of the most historically evocative documents in the study of the Indo-Iranian schism. In it, Xerxes boasts of destroying a sanctuary where the daivas had been worshipped and replacing daiva worship with the worship of Ahura Mazda. This was not merely a private religious sentiment but an imperial political act: the most powerful king on earth using his authority to enforce the theological boundary that Zarathustra had drawn centuries earlier. The word <em>daiva</em> in Xerxes' Old Persian carries exactly the same meaning as in Avestan: "false god, demon, object of wrong worship." And it is phonologically identical to Sanskrit <em>deva</em>, "god." Xerxes, in his royal inscription, is essentially declaring that the gods of India are demons. The schism could not be more visible.</p>
+    </div>
+
+    <div class="split-view reveal">
+      <div class="split-panel gold-panel">
+        <div class="split-panel-header">Vedic India's View</div>
+        <p class="split-panel-title">Indra: Champion and King</p>
+        <p>"Indra, who wields the bolt, is praised as the first god; to him go the best songs. Even so I proclaim Indra's heroic deeds, which he who wields the bolt accomplished in the beginning. He slew the dragon and let loose the waters; he split the flanks of the mountains." (Rigveda 1.32)</p>
+      </div>
+      <div class="split-panel crimson-panel">
+        <div class="split-panel-header">Zoroastrian Iran's View</div>
+        <p class="split-panel-title">Indra: Chief of Demons</p>
+        <p>Indar (Indra) is listed in the Vendidad among the chief Daevas, demonic beings who oppose truth. He leads the faithful astray and embodies the spirit of apostasy. To worship him is to choose the Lie over Truth, to side with Angra Mainyu against Ahura Mazda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CHAPTER 5: THE GREAT SCHISM
+     ======================================== -->
+<section class="chapter" id="ch5">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Five</span>
+      <h2 class="chapter-title">The Great Schism</h2>
+      <p class="chapter-subtitle">Deva and Asura Inversion — The Linguistic and Theological Rupture</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>At some point in the late Bronze Age, the unity of the Indo-Iranian religious worldview began to crack. As Indo-Aryans and Iranians developed separately, subtle linguistic shifts and perhaps sectarian innovations gave rise to the Great Schism, a symbolic inversion wherein each branch redefined the old labels in mirror-opposite ways. The result was unprecedented in world religion: two closely related faiths effectively swapped the moral polarity of the same divine terminology. In Vedic India, <em>deva</em> remained the word for a god (generally positive), while <em>asura</em> gradually morphed into a term for a malicious being. In Iran, <em>ahura</em> (from <em>asura</em>) was upheld as the noble term for the highest gods, whereas <em>daeva</em> (deva) came to mean a false god, a demon. How did this strange flip occur?</p>
+
+      <p>Ancient evidence suggests it was a drawn-out process, not a single event. The Rigveda, our earliest Sanskrit source (c. 1500 to 1200 BCE), still uses <em>asura</em> in a positive sense frequently, calling Varuṇa and Mitra "wise Asuras." But it also contains passages where we see a nascent distinction: one hymn speaks of "Asuras who are Devas" versus "Asuras who are not Devas." This hints that Vedic priests were wrestling with categories: perhaps using asura to denote certain venerable gods, while labeling other spirits or anti-gods as "asura adeva" (asuras that are non-gods). Over time, especially in later Vedic and epic literature, Asura became a byword for the power-hungry, prideful, and morally corrupt enemies of the gods.</p>
+    </div>
+
+    <div class="callout callout-crimson reveal">
+      <p class="callout-heading">The Mirror Paradox</p>
+      <p>Here is the extraordinary situation that emerged: both the Vedic Indians and the Zoroastrian Iranians continued to worship many of the same gods (Mitra/Mithra, fire, the sacred waters, the forces of cosmic order). But each tradition labeled the other's supreme divine category as its supreme evil category. Vedic Indians heard "ahura" and thought "demon" (for asura had become their word for demon). Zoroastrians heard "deva" and thought "demon" (for daeva had become their word for false god). Two peoples worshipping essentially overlapping values, demonizing each other's theological vocabulary, while neither actually worshipped what the other considered truly evil.</p>
+    </div>
+
+    <div class="body-text reveal">
+      <p>Iranian lore remembered that the Indian cousins had begun speaking of asuras negatively, and they misunderstood this as Indians claiming Ahuras (the Iranians' highest gods) were evil. Feeling their faith under attack, the early Iranians doubled down: they drew a sharper line between their beloved Ahuras and despised Daevas. If Hindu priests said "asuras are demonic," the Iranians would say, "Fine — then Daevas (your devas) are demonic!" So suggests one theory of mutual antagonism: the two groups, originally sharing the terms, each thought the other was slandering their gods, and so retaliated in kind.</p>
+
+      <p>Another theory, equally plausible, is that the changes occurred independently: perhaps Zoroaster's reforms came first, and later some Hindu theologians, offended by hearing that daevas (gods like Indra) were called demons by Iranians, decided to avoid asura and thus inadvertently confirmed the Iranian suspicions. Or vice versa: an internal Hindu linguistic shift came first, turning asura into a negative term (without targeting any Iranian god directly), and Iranians, upon hearing that, reacted by codifying their own dichotomy where Daeva became the bad word. In either case, it is clear that by the time of the earliest texts (the Rigveda and the Avesta), both peoples had "deviated from the typical Proto-Indo-Iranian usage, each in their own way." They ended up effectively worshipping each other's demons, at least in name, a curious twist, since in practice their ethical values and even many gods still largely coincided.</p>
+
+      <p>As one commentator aptly notes, looking at a handful of divine names in isolation makes Zoroastrianism and Hinduism appear antagonistic, "but with additional context their relationship becomes more clear." Both traditions still honored courage, truth, generosity, and piety; neither actually venerated what the other considered purely evil forces. The divergence was as much semantic and perspectival as it was theological.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The a-sura Misreading — A Scholarly Error That Changed History</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The False Etymology That Became Theology</h4>
+          <p>Sanskrit is an extraordinarily precise language, but even its greatest grammarians were capable of misreading archaic texts. The word <em>asura</em> in its earliest Vedic usage is opaque. Its etymology connects it to Proto-Indo-Iranian <em>*hásura-</em>, meaning "lord" or "powerful life-giver," from a root related to "being" or "vital force." But to a later Brahmin commentator working with a text several centuries old, the word might have looked like a compound of <em>a-</em> (the Sanskrit negative prefix, cognate to Greek <em>an-</em> and English <em>un-</em>) plus <em>sura</em> (a word meaning "god" or "bright being" derived from <em>svar</em>, "sun/brightness").</p>
+          <p>This reading, <em>a-sura</em> = "non-god" or "non-sura," is phonologically plausible to someone encountering the word without historical context. And once that etymology was accepted in a prestigious commentary or grammatical tradition, it would ripple through subsequent interpretation. If asura means "non-god," then every Rigvedic verse that calls Varuṇa an Asura is now a puzzle: either the verse is calling Varuṇa a non-god (impossible for a revered deity), or it must be interpreted differently. The solution found by later interpreters was sometimes to argue that the original Varuṇa was simply being called "exalted" in a different sense, or to quietly drop the asura designation from later retellings of his stories.</p>
+          <h4>The Parallel False Etymology in Iranian</h4>
+          <p>Interestingly, a parallel creative etymology may have operated in Iranian. The Avestan word <em>daēva</em> was ultimately from the same root as Sanskrit <em>deva</em>. But in the Zoroastrian theological tradition, once daevas were fully demonized, a need arose to explain <em>why</em> they had chosen evil. The answer given in some texts is that the Daevas chose the "Worst Mind" (<em>Aka Manah</em>, opposite of <em>Vohu Manah</em>, Good Mind). The implication is a kind of theological retroactive condemnation: they are evil because they freely chose evil at the beginning of time. This is a cosmogonic rationale, not an etymological one, but it serves the same purpose: explaining away what had once been a neutral or positive term by reframing its bearers as moral failures from the start.</p>
+          <h4>The Consequence: Two Traditions Locked in Inverted Self-Definition</h4>
+          <p>The end result of these linguistic and theological developments was that each tradition came to define its own divine category partly in opposition to the other's. To be Vedic meant to follow the Devas; to be Zoroastrian meant to reject the Daevas. To be Vedic meant to honor the Asuras who were the greatest gods; to be Zoroastrian meant to follow the Ahuras and reject the Daevas. Since Asura and Ahura are the same word, and since Deva and Daeva are the same word, the two traditions were essentially defining themselves as opposite to each other using shared vocabulary. This is the Indo-Iranian schism in its most concentrated form: a linguistic accident amplified by theology into a civilizational divide.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>By roughly the mid-1st millennium BCE, the split was complete. In India, the Devas were gods of light and virtue (though not without foibles), while the Asuras became a category of demons, proud titans fated to be vanquished. Later Hindu mythology richly developed the Deva-Asura wars, but often in a morally complex way: Asuras were not devils per se, but beings driven by ambition, frequently portrayed as cousins of the gods rather than ontologically evil. Some texts like the Upanishads even used Deva and Asura symbolically for tendencies within the human psyche, questioning vs. presumptuous attitudes.</p>
+
+      <p>Meanwhile in Iran, especially under the influence of Zarathustra's followers and later Zoroastrian theologians, the dichotomy hardened. The Ahuras (and a new term <em>yazata</em>, "worthy of worship") were exclusively the good divinities, led by Ahura Mazda, and the Daevas were denounced as a fixed category of irredeemably evil entities. No Iranian would call a holy being daeva anymore. So deep was this revulsion that by the Achaemenid era (5th century BCE), King Xerxes could proclaim in his famous daiva inscription: "There was a place where previously the daivas were worshipped. By the favor of Ahura Mazda, I destroyed that sanctuary of the daivas, and I forbade the worship of the daivas." This historical record in Old Persian shows the word daiva had come to mean "idol" or false god, a remarkable turnaround for a word rooted in the common Indo-European term for the divine.</p>
+
+      <p>Thus the great schism set the two sister civilizations on divergent theological paths. To an outside observer, it might seem as if the Indo-Aryans and Iranians were polarized opposites: one man's god was literally the other man's demon. Yet, as we shall see, appearances deceive. The moral content of their religions did not invert so neatly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PART III BANNER
+     ======================================== -->
+<div class="part-banner" id="part3" style="background: radial-gradient(ellipse at center, #0a1020 0%, var(--obsidian) 100%);">
+  <div class="part-banner-content">
+    <p class="part-number">Part Three</p>
+    <h2 class="part-title">
+      The <span class="accent">Cosmic Mirror</span>
+    </h2>
+    <p style="font-family: var(--font-alt); font-style: italic; color: var(--lapis-pale); margin-top: 1rem; font-size: 1.05rem;">Two pantheons reflecting each other across the millennia, hero and villain exchanging positions in opposite traditions</p>
+  </div>
+</div>
+
+<!-- ========================================
+     CHAPTER 6: REFLECTIONS IN RIVAL PANTHEONS
+     ======================================== -->
+<section class="chapter" id="ch6">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Six</span>
+      <h2 class="chapter-title">Reflections in Rival Pantheons</h2>
+      <p class="chapter-subtitle">Mirror Images, Inversions, and the Gods That Traveled Both Ways</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>In the wake of the schism, the Vedic and the Zoroastrian traditions evolved elaborate mythologies that often appear as distorted mirror images of one another. Many individual figures and concepts were directly shared but only their narrative framing and valorization differed. By comparing these side by side, we gain insight into how cultural environment and ideology can reshape the same inherited symbols beyond recognition, and yet how those symbols continue to carry the same fundamental human concerns about power, order, truth, and the cosmos.</p>
+
+      <p>Take the Storm God <span class="term">Indra<span class="term-tooltip"><strong>Indra</strong>The king of the Vedic Devas, storm-god, soma-drinker, and dragon-slayer. He defeats Vṛtra the cosmic serpent to release the waters of creation. In Avestan tradition he is Indar, a chief Daeva, demon of apostasy. This inversion is perhaps the most vivid illustration of the Indo-Iranian schism.</span></span>. In the Rigveda, Indra is the colossal champion of the Devas, lauded for smashing the serpent Vṛtra and letting the life-giving rivers flow. He is <em>maghavan</em> (bountiful), the warrior who secures prosperity for his followers. With a body large enough to be fed a thousand vats of soma, he embodies not just military prowess but the intoxicating vitality of life itself. Rain, which can be violent in India's monsoon-ravaged plains, is his gift. Thunder and lightning announce his presence. He is the god of the sky in its most energetic, dynamic, and dangerous mode.</p>
+
+      <p>Now peer at the Iranian side. In the Avesta's Vendidad, Indra is named as a chief Daeva, explicitly an evil being opposed to truth. What could turn a celebrated hero into a devil? Part of the answer may lie in geography and climate. The Iranian plateau is largely arid; water is precious and rains are scarce blessings. A god of storms like Indra would be naturally experienced as benevolent in water-scarce Iran, one might think. But the key is not rain as such: it is the <em>culture</em> of Indra worship that Zarathustra found destructive. Indra was the patron of the warrior culture, of cattle-raiding, of soma-drunk feasting after battle. Zarathustra's reform championed the sedentary, agricultural, cattle-herding community against the raiding warrior aristocracy. Indra embodied precisely the values he opposed.</p>
+    </div>
+
+    <div class="figure reveal">
+      <div class="figure-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Apadana_east_Frieze.jpg/1280px-Apadana_east_Frieze.jpg"
+             alt="Apadana eastern staircase relief, Persepolis"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="figure-placeholder" style="display:none; min-height:260px;">
+          <div class="figure-placeholder-icon">🏛</div>
+          <div class="figure-placeholder-text">Apadana Eastern Staircase Relief, Persepolis<br><span style="opacity:0.6;">Delegations from across the Achaemenid Empire bringing tribute</span></div>
+        </div>
+      </div>
+      <div class="figure-caption">
+        <div class="figure-caption-title">The Apadana Staircase, Persepolis (c. 518-465 BCE)</div>
+        <p class="figure-caption-text">The eastern staircase of the Apadana audience hall at Persepolis shows delegations from across the Achaemenid Empire bringing tribute to the King of Kings. Among the delegations are peoples from India, Egypt, Babylon, Ionia, and Central Asia. The Persian king who received these delegations claimed to rule under the protection of Ahura Mazda, the supreme lord whose cosmic order (Asha) undergirded imperial authority. The Indic delegation presents Indian goods; their home country worshipped as its king of gods the very being the Persian king's religion counted as a chief demon.</p>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">Varuṇa's Journey into Ahura Mazda</h3>
+
+    <div class="body-text reveal">
+      <p>Now consider Varuṇa, once the Asura Sovereign of the cosmos. In the Rigveda he is a majestic, if fearsome, upholder of <em>ṛta</em>, who punishes sin with his noose of fate yet also grants insight to sages. By later Hindu times, Varuṇa recedes to become god of the ocean, respected but no longer central to lived religion. The great cosmic lawyer who once governed the stars from his heavenly throne becomes a somewhat demoted figure in the sprawling Hindu pantheon, overshadowed by Vishnu, Shiva, and the great Goddess.</p>
+
+      <p>In Iran, however, the spirit of Varuṇa arguably rose to the very top. Ahura Mazda, the supreme Lord, bears striking resemblance to Varuṇa in several aspects. Both are wise, all-seeing, concerned with covenant and cosmic law. Both enforce oaths: Varuṇa binds oath-breakers with his noose; Ahura Mazda judges the souls of the dead at the Chinvat Bridge. Both govern the waters and the sky. Both are called "the wise one" in their respective traditions. The Avesta never names Varuṇa directly (the name is absent from the corpus), but Zoroastrian tradition has Haurvatāt (Wholeness) and Apąm Napāt ("grandson of waters") alongside Mithra, reflecting the watery, law-giving domain of Varuṇa now vested in the Ahuric side.</p>
+
+      <p>Some mid-20th century scholars suggested that Zoroastrianism especially exalted a Varuṇa-like figure because in the harsh Iranian climate water and the ethical order were paramount. While simplistic in isolation, the observation holds a kernel of truth: Iranian religion made Ahura Mazda into a composite of the highest divinity traits, including those of an omniscient sky-father and a ruler of cosmic waters. In one Avestan hymn, Mazda is lauded as the god "with good supernatural power, zealous, accompanied by aša (truth)," language that echoes Vedic praise of Mitra and Varuṇa. It is as if the mantle of Varuṇa the Asura King found a new home in the figure of the Wise Lord. Meanwhile, Varuṇa's "exiled" brothers, envisioned in later Indian legend as demons, might correspond to the daevas banished in Zoroastrian lore.</p>
+    </div>
+
+    <h3 class="section-heading reveal">Mitra/Mithra — The One Who Survived Both Ways</h3>
+
+    <div class="body-text reveal">
+      <p>Another striking case is Mithra/Mitra. This deity of contracts and oaths was revered on both sides: Mitra in India is often twinned with Varuṇa as friend of mankind, guardian of truth. Mithra in Iran likewise remained immensely popular despite Zarathustra's silence on him, and was classed among the few who could still be called Ahura. Notably, Mithra is one of the very few whom the Avesta occasionally still calls "Ahura" alongside Mazda. In the Hymn to Mithra (<em>Mihir Yasht</em>), he is described as "the lord of wide pastures," "he of the thousand ears," with a hundred-columned palace on the highest summit of Mount Harā.</p>
+
+      <p>In India, Mitra is a deva (one of the Ādityas, solar gods). In Iran, Mithra is on the good side as well, worshipped as the god of covenant and sunlight who battles falsehood. The two traditions agree: Mithra/Mitra is beneficent. However, intriguingly, "Mitra" in Sanskrit never attained the absolute primacy that Mithra did in later Iran, where Mithraism even spread westward to become a major mystery religion in the Roman Empire. Roman soldiers from Britain to Mesopotamia worshipped in underground sanctuaries (Mithraea) a version of this Indo-Iranian deity. The image of Mithra slaying a bull in Roman Mithraic iconography likely encodes astronomical symbolism, but the deity's roots are unmistakably in the shared Indo-Iranian tradition. The fact that it was the Iranian version (Mithra as Ahura, as cosmic figure of Truth and the Sun) rather than the Vedic version (Mitra as one of many Ādityas) that conquered the Roman legions is perhaps an index of Zoroastrianism's more concentrated theological investment in this deity.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: Verethragna — Indra's Ghost in Iranian Religion</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The Problem with Killing a God</h4>
+          <p>When Zarathustra demonized Indra, he faced a theological problem: Indra's most beloved function — the slaying of obstacles and the granting of victory — was not only morally neutral but actively desirable. The Vedic Indra smote the dragon Vṛtra (whose name means "obstacle" or "coverer") and released the cosmic waters, a mythological encoding of storm-rain fertilizing the earth. Victorious military force and the breaking of cosmic blockages are legitimate needs for any religious tradition.</p>
+          <p>Zoroastrianism's solution was elegant: it transferred Indra's positive functions to a new figure, Verethragna (Avestan: Vərəθraγna), "the Smiter of Resistance." His very name is the Avestan translation of Vṛtra-han, "Vṛtra-slayer," the epithet of Indra in the Rigveda. Verethragna appears in ten different forms: a strong wind, a bull, a white horse, a rutting camel, a boar, a youth, a raven, a wild ram, a fighting buck, and a man bearing a weapon of gold. Each form embodies a different aspect of victorious force. The Bahram Yasht devoted to him is among the most vivid of the Avestan hymns.</p>
+          <h4>The Name Becomes a Royal Legacy</h4>
+          <p>The Iranian word for "victory" (bahram or wahram) is derived from Verethragna's name. Numerous Sasanian kings bore names meaning "Victory": Bahram I, II, III, IV, V. The name spread into the wider Iranian cultural sphere: the Armenian Vahagn, the Parthian Varhran, and even a Sogdian borrowing into Central Asian culture. It is one of the great ironies of religious history: a god whose name means "I smash Vṛtra/Indra's dragon" became the greatest warrior-deity of the Iranian world, precisely by replacing the deity who had performed that function. Indra was cast out as a demon, but his dragon-slaying power was too essential to abandon. It simply found a new host.</p>
+          <h4>The Paradox in Brief</h4>
+          <p>Zoroastrianism condemned "Indra" as a fiend, yet worshipped Victory in another form whose name means "Indra's feat." On the flip side, later Hindu tradition also grew ambivalent about Indra, portraying him in epics and Purāṇas as proud, sometimes foolish, and subordinate to higher gods like Vishnu. In Buddhism, Indra (as Śakra) is a benevolent but still samsaric deity, not an ultimate savior. Thus both cultures, in different ways, moved beyond the old storm-god's primacy: Iran demonized him and preserved his function under a new name; India domesticated him within a larger pantheon.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">The Chief Adversary: Angra Mainyu versus the Asura Kings</h3>
+
+    <div class="body-text reveal">
+      <p>Perhaps the clearest case of conceptual divergence lies in each culture's choice of chief adversary. In Hindu myth, the adversaries of the Devas are often led by powerful Asura kings, including Vṛtra, Rāvaṇa, Hiraṇyakaśipu, and Mahishasura, who despite their might are ultimately on the side of <em>adharma</em> (chaos/unrighteousness). In Zoroastrianism, the head demon is <span class="term">Angra Mainyu<span class="term-tooltip"><strong>Angra Mainyu / Ahriman</strong>The "Hostile Spirit" or "Destructive Mentality" in Zoroastrianism. He is not a fallen god but an originally evil cosmic principle, antithetical to Ahura Mazda from the beginning. This makes Zoroastrianism unique: it is not a story of fallen angels but of a primordial moral bifurcation.</span></span> (Ahriman), the Hostile Spirit, who is not himself called a daeva but rather is the instigator of the daevas' corruption. He has no direct Vedic equivalent, though some scholars see him as an amplification of the Vedic concept of <em>druh</em> (wickedness) into a cosmic principle.</p>
+
+      <p>Zoroastrianism externalized the source of evil into a separate, nearly independent being, whereas Indian thought more often internalized it into cyclical struggles and personal karma. The difference may stem from Zarathustra's intense ethical dualism: he presented existence as a battleground between Truth (<em>aša</em>) and the Lie (<em>druj</em>), personified by Mazda versus the Hostile Spirit. India, on the other hand, while certainly having its good-versus-evil wars in myth, did not elevate any Asura to an eternal counter-god against Brahman or Vishnu; rather, the Asuras are repeatedly vanquished and reborn, part of the cosmic drama. This is why in Indian epics you find occasional sympathies even for Asura figures: Mahābali, an Asura king, is revered in some traditions, and Rāvaṇa is seen as a great devotee of Lord Śiva in others. Zoroastrianism drew a more absolute line in the sand.</p>
+
+      <p>Despite these divergences, it is crucial to note that broadly similar values underlay both the Vedic and Zoroastrian systems. Both traditions honored truth, generosity, bravery, and loyalty, and abhorred breach of oaths, cruelty, and chaos. The Encyclopædia Iranica concludes that the demonization process in Iran was gradual and did not imply a wholly different morality: the daevas were rejected as unethical gods, not because Iranians worshipped cruelty while Indians worshipped kindness. In fact, "the good group and the bad group in both religions have broadly similar morality." The difference was in classification, not ethical substance.</p>
+    </div>
+
+    <div class="pull-quote reveal crimson-quote">
+      <p class="pull-quote-text">It seems their ethics are not even so different as to worship each other's devils. On the surface at least, they have a lot in common. The quarrel was not about whether truth is good or falsehood is evil. It was about which beings embodied which qualities — and on that, the two traditions, through linguistic accident and cultural divergence, came to precisely opposite conclusions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CHAPTER 7: DUALISM ENTRENCHED
+     ======================================== -->
+<section class="chapter" id="ch7">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Seven</span>
+      <h2 class="chapter-title">Dualism Entrenched</h2>
+      <p class="chapter-subtitle">The Zoroastrian Revolution, Vedic Responses, and the Architecture of Good and Evil</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>By the middle of the first millennium BCE, the trajectories of the Iranian and Indian religions had crystallized into what we recognize today as Zoroastrianism on one hand, and the broad Vedic-derived Hindu tradition (and its offshoots like Buddhism) on the other. Zoroastrianism formalized perhaps the world's first fully fleshed-out dualist theology: a cosmic moral battlefield with clearly defined sides, each with its divine hierarchy and each with a role for every human soul to play.</p>
+
+      <p>While Ahura Mazda (called Ohrmazd in later Middle Persian) was the uncreated Creator of all that is good, Angra Mainyu (Ahriman) was the uncreated source of evil, not equal in power (for ultimately good will triumph at the eschaton), but terrifyingly potent in the current age. All the Ahuric beings (the Yazata gods and holy immortals like Mithra, Anāhitā, Sraosha, Haoma, and the six Amesha Spentas) rally under Mazda's banner, and all demonic forces (the Daevas and the druj-host) serve Ahriman. Life itself became a moral battleground. Every honest act was literally supporting the good gods against the evil ones, and every impure thought was a victory for Angra Mainyu.</p>
+
+      <p>The Zoroastrian concept of <span class="term">Frashokereti<span class="term-tooltip"><strong>Frashokereti</strong>The Zoroastrian eschatological concept of the "Final Renovation" or "Making Wonderful." At the end of time, after a series of saviors (Saoshyants), the dead will be resurrected, all creation will be purged of evil, and even hell will be emptied as souls undergo final purification through molten metal. Ahura Mazda's creation will be restored to its perfect original state.</span></span> (the Final Renovation) gave this cosmic battle a linear endpoint. Unlike the Hindu cyclical cosmos, which repeats endlessly through kalpas and yugas, the Zoroastrian cosmos has a beginning, a middle (our current age of struggle), and an end. At the end, a Saoshyant (savior) will appear, the dead will be resurrected, evil will be utterly destroyed, and creation will be renewed in a state of perfection. Hell will be emptied, even the demons rehabilitated through a final purgation of molten metal through which all souls pass. Remarkably, this means Zoroastrian eschatology is ultimately reconciliatory: even Angra Mainyu will be defeated and obliterated, and creation will be made whole.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: Zurvanite Heresy — The One Unity Behind the Two Principles</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The Problem of Pure Dualism</h4>
+          <p>Even within Zoroastrianism, the stark dualism of Ahura Mazda versus Angra Mainyu created a philosophical problem: if both are uncreated and self-existent, what guarantees that good will ultimately triumph over evil? Two eternal, uncreated principles locked in combat implies an unstable metaphysics. This tension gave rise to a significant theological movement known as Zurvanism.</p>
+          <h4>Zurvanism: Time as the Parent of Both</h4>
+          <p>In Zurvanite thought, which became significant in the Sasanian period (3rd-7th centuries CE), both Ahura Mazda and Angra Mainyu were conceived as twin sons of Zurvān (Infinite Time or Fate). The story went that Zurvān, a primordial being of unlimited time, performed sacrifices to obtain a son who would create the good world. After a thousand years of sacrifice he began to doubt, and from this doubt Angra Mainyu was born (doubt = evil impulse). At the same moment, Ahura Mazda was born from the pure sacrifice. Zurvān then granted dominion first to whichever son appeared first; Angra Mainyu burst forth and seized the promise, ruling for a limited period, after which Ohrmazd (Ahura Mazda) would take over eternally.</p>
+          <p>This narrative accomplishes something theologically radical: it places both good and evil under a higher principle (Zurvān/Time), implying that the universe has an underlying unity behind the duality. Orthodox Zoroastrians condemned this as heresy, precisely because it appeared to make Ahura Mazda and Angra Mainyu equal in origin and to undermine the absolute moral authority of Ahura Mazda. But Zurvanism was popular enough to influence the court theology of several Sasanian kings and to leave traces in later Islamic and Gnostic traditions that drew on Iranian sources.</p>
+          <h4>The Parallel Indian Problem</h4>
+          <p>India had the opposite problem: if all is ultimately Brahman (the single ultimate reality), then evil has no independent existence, yet clearly evil seems to exist. Hindu philosophers resolved this through the concept of māyā (cosmic illusion or the power of projection) and avidyā (ignorance). Evil is not ontologically real; it is a product of ignorance, a misperception of the One as many, of the eternal Self as the perishable body. Once you truly know Brahman, evil evaporates like a dream on waking. Zoroastrians resolved it apocalyptically: evil is real NOW but will be annihilated in the Final Renovation. Both approaches aimed at a final harmony, but one through absorption (Indian monism: duality dissolves into unity), the other through annihilation (Zoroastrian dualism: one side destroys the other).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>Vedic religion, and the evolving Hindu tradition, responded to the challenge of dualism differently. Rather than a stark cosmic war with clearly defined sides, Indian thought absorbed the dichotomy into a more fluid and cyclical narrative. The war between Devas and Asuras became a perennial theme, not as an absolute beginning and end, but as a repeating motif in the fabric of the universe. The Puranas tell of Asuras who perform austerities and momentarily gain power, even rulership over the cosmos, only to be overthrown by the Devas aided by Vishnu or another supreme deity. However, critically, the Asuras in Hinduism were not the metaphysical equals of the supreme good. They were part of the samsaric cycle, often related by blood to the gods. Indeed "Asura" and "Deva" could be brothers: Prahlāda the Asura prince is the son of the demon king Hiraṇyakaśipu but devotee of Vishnu, illustrating perfectly blurred lines between the categories.</p>
+
+      <p>Hindu philosophy, especially by the time of the Upanishads and later the Bhagavad Gītā, internalized the deva-asura conflict as symbolic of human tendencies. The Gītā's 16th chapter enumerates <em>daivi sampad</em> (divine qualities: fearlessness, purity, compassion) versus <em>asuri sampad</em> (demonic qualities: pride, anger, ignorance) inherent in human nature. It explicitly says these traits exist mixed in people, and rarely is a person wholly one or the other. The implication is that gods and demons are in our hearts, not just in the heavens. This psychological interpretation shows the fundamentally different approach: while Zoroastrianism drew the battle lines in the cosmos, Hinduism drew them within the self.</p>
+
+      <p>This dualist creed had far-reaching influence beyond the borders of Iran. Many scholars have argued that Zoroastrian ideas, including one single good God opposed by a Devil, a final apocalypse, heaven and hell, and messianic saviors, profoundly influenced later Judaism, Christianity, and Islam. It is an alluring and well-evidenced thesis. When the Persians liberated the Jews from Babylonian captivity in 539 BCE, the Jews were extensively exposed to Zoroastrian doctrines, possibly inspiring concepts like Satan, angels, and resurrection in Second Temple Jewish thought. Zoroastrianism is one of the earliest religions to articulate ethics as the core of cosmic conflict, a revolutionary contribution to the world's moral imagination.</p>
+    </div>
+
+    <div class="callout callout-gold reveal">
+      <p class="callout-heading">A Revolution in Human Moral Imagination</p>
+      <p>Earlier Indo-European religions (including the Vedic) had been more ritual-focused, concerned with maintaining cosmic order through sacrifice rather than moral dualism. Zoroaster flipped that script: elevating personal righteousness and the choice between good and evil to cosmic significance, essentially spiritualizing what had been largely a ritual affair. This was revolutionary for its time, and its influence radiates through Jewish angelology, Christian concepts of Satan, and Islamic ideas about Iblis. The deva-asura schism was not just an internal Indo-Iranian affair: it became one of the foundational conceptual structures of world religion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PART IV BANNER
+     ======================================== -->
+<div class="part-banner" id="part4" style="background: radial-gradient(ellipse at center, #08100a 0%, var(--obsidian) 100%);">
+  <div class="part-banner-content">
+    <p class="part-number">Part Four</p>
+    <h2 class="part-title">
+      Echoes Across the <span class="accent">Ancient World</span>
+    </h2>
+    <p style="font-family: var(--font-alt); font-style: italic; color: var(--parchment-dim); margin-top: 1rem; font-size: 1.05rem;">From the Norse gods of Asgard to the Jewish exile in Babylon — the Indo-Iranian schism and its global reverberations</p>
+  </div>
+</div>
+
+<!-- ========================================
+     CHAPTER 8: THE ABRAHAMIC CRUCIBLE
+     ======================================== -->
+<section class="chapter" id="ch8">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Eight</span>
+      <h2 class="chapter-title">The Abrahamic Crucible</h2>
+      <p class="chapter-subtitle">How Zoroastrianism Shaped Judaism, Christianity, and Islam</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>No story of the Indo-Iranian schism is complete without addressing one of its most consequential echoes: the profound influence that Zoroastrian dualism, born from the deva-asura split, exerted upon the Abrahamic religions that would come to govern the moral imagination of half the world's population. The story begins in 597 BCE with an event that the Hebrew Bible records with a mixture of horror and theological reflection: the Babylonian exile.</p>
+
+      <p>When Nebuchadnezzar II of Babylon destroyed Jerusalem, burned the Temple of Solomon, and deported the Judean elite to Mesopotamia, he inadvertently created one of the most theologically generative encounters in history. In Babylon, the exiled Jews lived within sight of the great ziggurat temples of Marduk and Ishtar, absorbed Babylonian astronomical knowledge (which left permanent marks on Jewish ritual calendar), and heard stories of Persian religion filtering in from the east. The exposure to Zoroastrian concepts would accelerate dramatically a generation later.</p>
+    </div>
+
+    <div class="inscription-box reveal">
+      <p class="inscription-text">"Thus says Cyrus king of Persia: The LORD, the God of heaven, has given me all the kingdoms of the earth, and he has charged me to build him a house at Jerusalem, which is in Judah. Whoever is among you of all his people, may his God be with him, and let him go up to Jerusalem..."</p>
+      <p class="inscription-source">Ezra 1:2-3 (Hebrew Bible) — The Decree of Cyrus, 538 BCE. The Jewish scribes who recorded this believed their God had moved the Persian king to restore them. The Zoroastrian Cyrus, worshipping Ahura Mazda, appears here as the instrument of the Jewish God. The encounter between Zoroastrian Persia and exilic Judaism was one of world history's most consequential religious contacts.</p>
+    </div>
+
+    <div class="body-text reveal">
+      <p>In 539 BCE, <span class="term">Cyrus the Great<span class="term-tooltip"><strong>Cyrus II the Great (c. 600-530 BCE)</strong>Founder of the Achaemenid Persian Empire. He conquered Babylon in 539 BCE and famously issued the Cyrus Cylinder, allowing deported peoples including the Jews to return to their homelands. Isaiah 45 calls him "messiah" (anointed), making him the only non-Jew so honored in the Hebrew Bible. He is celebrated in Zoroastrian tradition as a pious king and in Jewish tradition as a liberator.</span></span> of Persia conquered Babylon and issued what some call the world's first charter of human rights: the Cyrus Cylinder, now housed in the British Museum. In it, Cyrus declares himself the servant of Marduk (Babylon's chief god), restoring the temples and deported peoples of the conquered lands to their homes. For the Jews, he issued a specific decree (recorded in Ezra 1 and 6) allowing them to return to Judah and rebuild the Temple. The Jewish book of Isaiah, composed partly in this period, makes the astonishing claim that the Jewish God called Cyrus His "anointed" (<em>mashiah</em>, the word from which "messiah" derives), the only non-Israelite in the entire Hebrew Bible to receive this designation.</p>
+
+      <p>What does Cyrus's role represent theologically? A Zoroastrian king, worshipping Ahura Mazda as the universal Good Lord, was perceived by Jewish prophets as the instrument of their own God. This suggests that the Jewish encounter with Persian religion was not one of hostile confrontation but of profound, if asymmetric, mutual recognition. Ahura Mazda and Yahweh were each understood as the one righteous God of all creation, the opponent of chaos and falsehood. The theological DNA was compatible.</p>
+
+      <p>The consequences for Jewish theology were immense. Before the Babylonian exile, the Hebrew Bible's picture of the divine world is relatively simple: Yahweh is supreme, other nations' gods are "foreign gods" (sometimes explicitly recognized as existing, sometimes denied), and evil enters the world through human disobedience. The adversarial figure of "the satan" (<em>ha-satan</em>) appears in early texts like Job as a member of the divine council, an "adversary" or "accuser" in Yahweh's service, not an independent evil principle.</p>
+    </div>
+
+    <div class="figure reveal">
+      <div class="figure-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Cyrus_cylinder.jpg/1280px-Cyrus_cylinder.jpg"
+             alt="The Cyrus Cylinder"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="figure-placeholder" style="display:none; min-height:220px;">
+          <div class="figure-placeholder-icon">📜</div>
+          <div class="figure-placeholder-text">The Cyrus Cylinder (539 BCE)<br><span style="opacity:0.6;">British Museum — Cyrus's declaration of restored freedoms and religious tolerance</span></div>
+        </div>
+      </div>
+      <div class="figure-caption">
+        <div class="figure-caption-title">The Cyrus Cylinder, 539 BCE (British Museum)</div>
+        <p class="figure-caption-text">The Cyrus Cylinder, inscribed in Babylonian cuneiform, records the conquest of Babylon by Cyrus the Great and his policy of restoring deported peoples and their gods to their homelands. Often called the first charter of human rights, it represented in practice the Persian Zoroastrian policy of religious tolerance — a striking contrast to Xerxes' daiva inscription, which suppressed rival cults. The encounter of Zoroastrian Persia with exilic Judaism would leave indelible marks on Jewish, and through Judaism, Christian and Islamic theology.</p>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>After the exile and the sustained contact with Persian religion, the situation changed dramatically. In texts composed or compiled in the post-exilic period (6th-4th centuries BCE), including later prophetic books, the wisdom literature, and especially the apocalyptic texts, we see a transformation. The figure of "the satan" begins to acquire the characteristics of an independent malevolent principle, ultimately becoming Satan, the cosmic adversary of God and humanity. Angels multiply into elaborately organized hierarchies: seraphim, cherubim, archangels. Resurrection of the dead, virtually absent from pre-exilic Hebrew thought, becomes a prominent theological concept. A dramatic final judgment, in which all souls will be evaluated and assigned to eternal reward or punishment, emerges as a cornerstone of Second Temple Judaism. And an apocalyptic cosmic war between forces of good and evil, to be resolved at the end of time in God's ultimate victory, becomes the framework of entire religious texts.</p>
+
+      <p>These concepts align with remarkable precision to the Zoroastrian theological framework: the cosmic dualism of Ahura Mazda and Angra Mainyu, the elaborate angelic hierarchy of the Amesha Spentas and Yazatas, the resurrection of the dead at the Frashokereti, the final judgment at the Chinvat Bridge, and the eschatological triumph of good over evil. The correspondence is too systematic to be coincidental. The dominant scholarly interpretation is that Jewish theology absorbed these Zoroastrian structures during the Persian period and transformed them into distinctively Jewish forms, which then passed into Christianity and Islam.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The Dead Sea Scrolls, the War Scroll, and the Sons of Light</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The War Scroll (1QM)</h4>
+          <p>Among the Dead Sea Scrolls found at Qumran in 1947, one of the most extraordinary is the War Scroll (1QM), composed probably in the 1st century BCE by a Jewish sectarian community that identified themselves as the "Sons of Light." The scroll describes in elaborate military detail the eschatological war between the Sons of Light (the community and their angelic allies) and the Sons of Darkness (the enemies of the community and their demonic allies), to be fought at the end of days under the leadership of the archangel Michael.</p>
+          <p>The language of the War Scroll is saturated with the Zoroastrian conceptual vocabulary of Light versus Darkness, Truth versus the Lie: "And you, O God, are terrifying in the glory of your kingdom, and the congregation of your holy ones is among us for everlasting help... [you will] deliver into the hand of the poor the enemies from all the lands, to humble the mighty of the peoples by the hand of those bent to the dust, to render to the wicked their reward, to justify for yourself the judgment of truth, and to make of your name an everlasting great one among the peoples..." — this is recognizably Asha-language, the language of Cosmic Truth triumphing over the Lie, applied to a specific Jewish sectarian context.</p>
+          <h4>The Magi at the Nativity</h4>
+          <p>The New Testament Gospel of Matthew (2:1-12) contains one of the most culturally evocative stories in Christian scripture: the Magi (Greek: <em>magoi</em>, from Old Persian <em>maguš</em>) come from the East to worship the infant Jesus, following a star. The Magi were specifically the priestly class of Zoroastrianism; the word "magus" (plural "magi") is the root of our English word "magic" and refers to the hereditary Median priesthood who maintained the sacred fire and performed the Zoroastrian rituals. The Matthew nativity narrative thus depicts Zoroastrian priests as the first non-Jewish worshippers of Christ, guided by celestial signs (a Zoroastrian concern with astronomical portents) to honor the one whom Matthew presents as the fulfillment of all prophecy.</p>
+          <p>Whether historical or theological legend, this story encapsulates the extraordinary theological encounter between the two traditions that flowed from the original Indo-Iranian heritage: the Zoroastrian priests, descendants of the tradition that demonized "Daevas" and elevated Ahura Mazda, appearing in the founding narrative of a religion that would claim universal dominion.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-text reveal">
+      <p>The influence of Zoroastrian dualism on Christianity and Islam is equally profound. Early Christianity's developing concept of Satan as an independent cosmic adversary of God, who rules the "world" as a usurping power until Christ's return, is structurally identical to Angra Mainyu's role in Zoroastrianism. The Christian concept of a final judgment, resurrection, heaven, and hell, the notion that history is moving toward an eschatological climax when good will finally triumph over evil, the existence of angels and demons as organized armies on opposing sides of a cosmic war: all of these have precise parallels in Zoroastrian theology that predate their appearance in Christian texts.</p>
+
+      <p>In Islam, the figure of Iblis, who refuses to bow before Adam and becomes Shaytan (Satan), the enemy of humanity, embodies a similar cosmic adversary role. Islamic cosmology's division of spiritual beings into the obedient angels (malak) and the rebellious jinn (among whom Iblis is supreme) echoes the Zoroastrian division of Yazatas (worthy of worship) and Daevas (rebellious evil spirits). The Islamic eschatology of the Day of Judgment, the weighing of deeds, the bridge over hell, and the final paradise all have clear structural parallels in Zoroastrian eschatology. This is the long shadow of the Indo-Iranian schism: the moment when Zarathustra declared that some divine beings were good and others evil was the moment that set in motion a chain of influence stretching from the Pontic steppe to the Quran's final chapter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CHAPTER 9: ECHOES IN DISTANT LANDS
+     ======================================== -->
+<section class="chapter" id="ch9">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Nine</span>
+      <h2 class="chapter-title">Echoes in Distant Lands</h2>
+      <p class="chapter-subtitle">Comparative Reflections from Norse to Mesopotamia, Greek to Celtic</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>The Indo-Iranian divergence is a dramatic example of religious schism, but it is not without parallels in world mythology. It can be illuminating to zoom out and see how the themes of divine conflict, inversion, and reinterpretation appear in other Indo-European cultures and beyond. While no other case exactly mirrors the Vedic-Avestan reversal, we find analogous patterns everywhere: old gods supplanted by new, sibling rivalries among deities, and peoples projecting their rivals as demons in mythic terms.</p>
+    </div>
+
+    <h3 class="section-heading reveal">Norse Mythology: Æsir, Vanir, and the War That Made Peace</h3>
+
+    <div class="body-text reveal">
+      <p>In Norse mythology, we encounter the dichotomy of Æsir and Vanir, two tribes of gods who once warred but later reconciled. This is not a moral dualism (both Æsir and Vanir are regarded as good gods), but the very terminology carries the fingerprints of the Indo-European inheritance. The Æsir (singular áss, "god") stems from Proto-Germanic <em>ansuz</em>, which is cognate with the Proto-Indo-Iranian <em>asura</em> meaning a lord or spirit of vital power. Meanwhile, the generic word for gods in Norse, <em>tívar</em> (from <em>deiwos</em>), survived as a poetic term for the gods, and Týr, a specific sky-god, carries the same root as Sanskrit <em>deva</em>. The correspondence is striking: in Norse belief, the Æsir were the chief gods (Odin, Thor, etc.), and Týr, originally a sky father, had a background role by Viking times.</p>
+
+      <p>One could say the Norse Æsir equal Indo-Iranian Asuras/Ahuras (lords), and Norse tívar equal Devas/Daevas (gods in general). However, crucially, the Norse did not moralize this division as good versus evil. That distinction fell instead to the conflict between gods and giants (Jötunn). The giants embodied forces of chaos much like the Vedic Asuras turned Rakshasas or the Zoroastrian Daevas. Yet many Norse giants have ambiguous relationships with the gods: Loki is a giant's son adopted among gods; Skadi, a giantess, marries into the Æsir. This fluidity is oddly reminiscent of Indian myths where gods and demons share lineage and sometimes intermingle (Asuras were sons of Kashyapa just as Devas were, according to the Purāṇas).</p>
+
+      <p>Furthermore, <em>Proto-Uralic asera</em>, a word meaning "supreme spirit or lord" borrowed from Proto-Indo-Iranian, shows that long before the split, the concept of "Asura" as a great lord was prominent enough to be loaned into entirely unrelated language families. This suggests the term's extraordinary antiquity and prestige. The fact that Proto-Germanic <em>ansuz</em> (Aesir), Proto-Uralic <em>asera</em>, Sanskrit <em>asura</em>, and Avestan <em>ahura</em> all align indicates that "asura-lord" was one of the most fundamental conceptual exports of the Proto-Indo-Iranian cultural world.</p>
+    </div>
+
+    <div class="deepdive reveal">
+      <div class="deepdive-header" onclick="toggleDeepDive(this)">
+        <div class="deepdive-header-label">
+          <svg class="deepdive-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span class="deepdive-title">Deep Dive: The Greek Titanomachy and the Universal War-of-Gods Pattern</span>
+        </div>
+        <svg class="deepdive-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="deepdive-body">
+        <div class="deepdive-body-inner">
+          <h4>The Pattern of Generational Succession</h4>
+          <p>Across Indo-European mythologies, a remarkably consistent pattern emerges: the current order of gods came to power by displacing a prior order, and the displaced beings are associated with chaos, size, primordial power, and the raw forces of the world before human civilization. In Greek mythology, the Olympians (Zeus and his siblings) overthrow the Titans (Cronus and his generation), who had themselves overthrown the Ouranides (children of Uranus the Sky). In Norse myth, the Æsir (and Vanir) are in perpetual tension with the Jötunn (giants), the primordial beings. In Celtic Irish mythology, the divine Tuatha Dé Danann battle the Fomorians (dark, formless beings from the deep). In Vedic India, the Devas contend with the Asuras and Rakshasas. In Zoroastrian Iran, the Ahuras battle the Daevas.</p>
+          <h4>What the Pattern Encodes</h4>
+          <p>Georges Dumézil, the great French comparative mythologist of the 20th century, proposed that the Indo-European peoples shared a three-part social and ideological structure: a class of sacred sovereignty (priest-kings), a class of warriors, and a class of producers/farmers. Each class had its corresponding divine patrons. In the Indo-Iranian world, the sacred sovereignty class corresponded to Varuṇa/Ahura Mazda (cosmic order), the warrior class to Indra/Verethragna (martial victory), and the producers to the twin healers Nasatyas/Anāhitā (fertility and health). The "war of the gods" myths may reflect the tensions between these social functions, with the sovereignty and producer functions sometimes united against the purely martial function (explaining why warrior-gods like Indra can be ambivalent figures and why a reform like Zarathustra's could demonize the warrior-patron).</p>
+          <h4>Coomaraswamy's Observation</h4>
+          <p>Ananda Coomaraswamy, the great Sri Lankan-American scholar of Indian art and mythology, once observed that across Indo-European traditions, the relationship between gods and titans/asuras is one of potential identity: "the titan is potentially an angel, the angel still by nature a titan." In Hindu understanding, this means that the Asuras are not ontologically evil beings but beings who have let the lower qualities (rajas and tamas, passion and inertia) dominate their higher potential. They are, philosophically, what any being becomes when it forgets its divine nature and becomes consumed by ego and power. This is a psychologically sophisticated and compassionate view of evil: not a fixed essence but a directional failure, always potentially reversible.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-heading reveal">Mesopotamia: Marduk, Tiamat, and the Combat Myth</h3>
+
+    <div class="body-text reveal">
+      <p>The ancient Mesopotamian tradition offers another lens. The Babylonian creation epic <span class="term">Enuma Elish<span class="term-tooltip"><strong>Enuma Elish</strong>The Babylonian creation epic, composed c. 12th century BCE. It describes the primordial cosmos as chaos (Tiamat and Apsu, salt and fresh water), then the birth of the gods, Tiamat's war against them, and finally Marduk's defeat of Tiamat and creation of the world from her body. It was recited at the Babylonian New Year festival.</span></span> presents a creation myth in which the young sky-god Marduk battles the primordial chaos-dragon Tiamat, splitting her body to form the sky and earth. This "combat myth" has striking structural parallels to the Vedic story of Indra slaying the serpent Vṛtra and to the Norse Thor's battle with the Midgard Serpent Jörmungandr. Comparative mythologists identify a Proto-Indo-European "Dragon Slaying" myth: a hero-god defeats a chthonic water-serpent to liberate the cosmic waters and establish order. The myth is attested from India (Indra/Vṛtra) through Greece (Zeus/Typhon) to the Norse world (Thor/Jörmungandr) and likely reflects a common inheritance.</p>
+
+      <p>What makes the Mesopotamian case particularly relevant to the Indo-Iranian story is this: when the Iranians demonized Indra, they were in a sense doing what Marduk did to Tiamat on a theological rather than mythological plane. They were declaring the dragon-fighting principle itself (the warrior god Indra) to be on the wrong side of the cosmos, casting the dragon-slayer as a dragon. This is an inversion of the combat myth so complete it is almost dizzying. The Vedic Indra was the hero of the cosmic dragon fight; in Zoroastrian theology, Indra himself became the enemy of truth and order. The dragon-slaying power was preserved (in Verethragna), but the deity was displaced.</p>
+    </div>
+
+    <h3 class="section-heading reveal">How Christianity Demonized the Old Gods</h3>
+
+    <div class="body-text reveal">
+      <p>A pertinent parallel comes from the early Christianization of Europe. When Christianity spread into the Germanic, Celtic, and Slavic worlds, it encountered robust polytheistic traditions that resisted easy elimination. The strategy employed by many early missionaries was not unlike what happened in the Indo-Iranian schism: the old gods were declared to be demons. The Norse Odin, the Germanic Woden, the Slavic Perun and Veles, the Celtic horned god Cernunnos: all were recast in Christian missionary literature as devils or malevolent spirits deceiving the ignorant pagans.</p>
+
+      <p>This process of demonization left permanent traces in language and folklore. In Armenian Christianity, the word for pagan gods, <em>dew</em> (from Iranian <em>daeva</em>), came to mean "demon," showing direct influence of Zoroastrian dualism on the Armenian vocabulary after their conversion. And intriguingly, modern Persian language itself, though Islamic now, still uses <em>div</em> (from <em>daeva</em>) to mean a fiend or ogre in folklore, preserving that ancient legacy in everyday speech. The daeva has traveled from a Proto-Indo-European word for "shining one" to a Zoroastrian theological demon, to an Armenian Christian evil spirit, to a Persian Islamic ogre: the same root, across five thousand years, consistently pushed toward the demonic whenever a new theological order needed an adversary.</p>
+    </div>
+
+    <div class="callout callout-lapis reveal">
+      <p class="callout-heading">The Universal Pattern</p>
+      <p>We might say the "war of the gods" motif is Indo-European-wide: Greek mythology's Olympians versus Titans, the Norse Æsir versus Giants, Celtic tales of Tuatha Dé Danann versus Fomorians, Vedic Devas versus Asuras, Zoroastrian Ahuras versus Daevas: all reflect an archetypal story of an older order overcome by a newer, or an eternal rivalry between chaos and cosmos. The Indo-Iranian twist was to map that mythical clash onto their own cultural bifurcation: the Iranians in effect labeled the "former gods" (daevas) as wicked, while the Indians downplayed that narrative or reinterpreted it in endless cycles. Both were making sense of the same inherited template in the light of their own historical circumstances.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     PART V BANNER
+     ======================================== -->
+<div class="part-banner" id="part5" style="background: radial-gradient(ellipse at center, #0a0818 0%, var(--obsidian) 100%);">
+  <div class="part-banner-content">
+    <p class="part-number">Part Five</p>
+    <h2 class="part-title">
+      The <span class="accent">Modern Age</span> Reacts
+    </h2>
+    <p style="font-family: var(--font-alt); font-style: italic; color: var(--parchment-dim); margin-top: 1rem; font-size: 1.05rem;">Colonial misreadings, nationalist reclamations, and the living dualities of our time</p>
+  </div>
+</div>
+
+<!-- ========================================
+     CHAPTER 10: COLONIAL ENCOUNTERS
+     ======================================== -->
+<section class="chapter" id="ch10">
+  <div class="container">
+    <header class="chapter-header reveal">
+      <span class="chapter-number">Chapter Ten</span>
+      <h2 class="chapter-title">Knowledge Lost and Found</h2>
+      <p class="chapter-subtitle">Colonial Encounters and Misreadings of the Ancient Past</p>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+
+    <div class="body-text reveal">
+      <p>As we leap forward into the modern age, the long chain of reinterpretation and misunderstanding continued in new forms. The Indo-Iranian religious divergence, after unfolding across millennia, eventually faded from active memory. Zoroastrianism dwindled after the Islamic conquests of Iran in the 7th century CE, surviving in pockets (notably among the Parsi community who fled to India, and among the Irani Zoroastrians who remained in Iran). Hinduism and Buddhism evolved in their own directions. When European scholars "rediscovered" these ancient connections in the 18th and 19th centuries, it was like awakening sleeping giants, but the process was rife with its own biases and misreadings.</p>
+
+      <p>In the 19th century, the field of comparative philology blossomed. The realization that Sanskrit, Avestan, Greek, Latin, and other languages were related (members of the Indo-European family) was revolutionary. Scholars like Max Müller pointed out that Sanskrit <em>deva</em> and Avestan <em>daeva</em> were the same word, split by a quirk of religious history. Early theories tried to explain this inversion as the result of a massive, ancient religious war between the Indians and Iranians. Modern scholarship, however, suggests a much slower, more complex evolution of language and localized theology, shaped by geography, politics, and the profound reforms of figures like Zarathustra.</p>
+
+      <p>In the 19th and 20th centuries, these ancient texts were sometimes twisted for modern political ends. The concept of the "Aryan" (from <em>Arya</em>/<em>Airya</em>), originally a noble cultural self-designation for both Indo-Aryans and Iranians, was tragically co-opted by European racial theorists. They stripped the term of its spiritual and linguistic context, fashioning it into a weapon of supremacy that fueled some of the darkest chapters of modern history.</p>
+
+      <p>Yet, underneath the scars of modern misinterpretation and the millennia of theological division, the original texts still speak. They reveal a shared human heritage grappling with the same fundamental questions of order, truth, and the nature of the divine. The story of the Devas and Asuras reminds us that our most profound religious divisions often stem from shared roots, and that our "demons" might simply be our neighbors' "gods" seen through a mirror darkly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="timeline-section">
+  <div class="container">
+    <h2 class="timeline-title">Chronology of the Schism</h2>
+    <div class="timeline">
+      
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 3500 – 2500 BCE</div>
+          <div class="timeline-event">Proto-Indo-European Unity</div>
+          <div class="timeline-desc">Pastoralists on the Pontic-Caspian steppe share a common pantheon, including the Sky Father (Dyēus Ph₂tēr) and early concepts of cosmic order. The terms *deiwos (god) and *h₂nsu- (lord) are established.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 2100 – 1700 BCE</div>
+          <div class="timeline-event">Sintashta & BMAC Interaction</div>
+          <div class="timeline-desc">Proto-Indo-Iranians develop chariot warfare and sophisticated fire rituals. In the BMAC zone, they likely refine the Soma/Haoma ceremonies before splitting into distinct Indic and Iranian migrations.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot lapis"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 1500 – 1200 BCE</div>
+          <div class="timeline-event">Composition of the Rigveda</div>
+          <div class="timeline-desc">In the northwestern Indian subcontinent, Indo-Aryans compose the earliest Vedic hymns. "Asura" is still frequently used as a title of immense honor for high gods like Varuṇa and Mitra.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot crimson"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 1200 – 1000 BCE</div>
+          <div class="timeline-event">Zarathustra's Reform</div>
+          <div class="timeline-desc">On the Iranian plateau, the prophet Zarathustra composes the Gathas. He elevates Ahura Mazda to supreme status and establishes a strict ethical dualism, laying the groundwork for the demonization of the Daevas.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 800 – 500 BCE</div>
+          <div class="timeline-event">The Semantic Inversion Solidifies</div>
+          <div class="timeline-desc">In India, later Vedic texts and early epics increasingly cast Asuras as the enemies of the Devas. In Iran, the Vendidad explicitly lists Vedic gods like Indra and the Nasatyas as chief demons.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot crimson"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 539 BCE</div>
+          <div class="timeline-event">The Abrahamic Encounter</div>
+          <div class="timeline-desc">Cyrus the Great conquers Babylon, freeing the exiled Jews. The subsequent exposure to Persian Zoroastrianism deeply influences Jewish (and later Christian and Islamic) concepts of angels, demons, dualism, and the apocalypse.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot lapis"></div>
+        <div class="timeline-content">
+          <div class="timeline-date">c. 486 – 465 BCE</div>
+          <div class="timeline-event">Xerxes' Daiva Inscription</div>
+          <div class="timeline-desc">Achaemenid King Xerxes I erects an inscription at Persepolis boasting of destroying a sanctuary of the "daivas," officially cementing the theological schism as imperial policy.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="glossary-section">
+  <div class="container-wide">
+    <header class="chapter-header reveal" style="text-align: center; margin-bottom: 2rem;">
+      <h2 class="chapter-title">Glossary of Key Terms</h2>
+      <div class="chapter-header-rule"><div class="chapter-header-rule-dot"></div></div>
+    </header>
+    
+    <div class="glossary-grid reveal">
+      
+      <div class="glossary-card">
+        <div class="glossary-word">Ahura</div>
+        <div class="glossary-lang">Avestan</div>
+        <div class="glossary-def">"Lord." The highest class of divinity in Zoroastrianism. Cognate with Sanskrit <em>Asura</em>. Elevated by Zarathustra to denote the supreme God, Ahura Mazda.</div>
+      </div>
+
+      <div class="glossary-card">
+        <div class="glossary-word">Asura</div>
+        <div class="glossary-lang">Sanskrit</div>
+        <div class="glossary-def">Originally a title of supreme honor for the greatest Vedic gods (like Varuṇa). Later evolved in Hindu mythology to mean a power-hungry titan or anti-god.</div>
+      </div>
+
+      <div class="glossary-card">
+        <div class="glossary-word">Daeva</div>
+        <div class="glossary-lang">Avestan</div>
+        <div class="glossary-def">Originally a generic term for "god." Demonized in Zoroastrian tradition to mean a false god, idol, or malevolent spirit opposing Truth.</div>
+      </div>
+
+      <div class="glossary-card">
+        <div class="glossary-word">Deva</div>
+        <div class="glossary-lang">Sanskrit</div>
+        <div class="glossary-def">"Shining one." The standard term for a deity in Hinduism. Cognate with Latin <em>deus</em> and Avestan <em>daeva</em>.</div>
+      </div>
+
+      <div class="glossary-card">
+        <div class="glossary-word">Aša / Arta</div>
+        <div class="glossary-lang">Avestan / Old Persian</div>
+        <div class="glossary-def">The cosmic principle of Truth, order, and righteousness. The fundamental good in Zoroastrian dualism, upheld by Ahura Mazda. Opposed by <em>Druj</em> (the Lie).</div>
+      </div>
+
+      <div class="glossary-card">
+        <div class="glossary-word">Ṛta</div>
+        <div class="glossary-lang">Sanskrit</div>
+        <div class="glossary-def">The physical and moral order of the universe in Vedic religion, responsible for the proper functioning of the natural, moral, and sacrificial realms. Cognate with Avestan <em>Aša</em>.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2 class="footer-title">Dividing the Gods</h2>
+  <p class="footer-text">An exploration of the Indo-Iranian schism, the evolution of dualism, and the enduring power of ancient words to shape the modern moral imagination.</p>
+  
+  <div class="footer-ornament">
+    <div class="footer-line"></div>
+    <div class="footer-dot"></div>
+    <div class="footer-line"></div>
+  </div>
+  
+  <p class="footer-credits">© 2026 Ojas Padalkar. Full Expanded Edition.<br>Designed for historical clarity and preservation.</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+    
+    reveals.forEach(reveal => observer.observe(reveal));
+  });
+
+  // Deepdive accordion toggle
+  function toggleDeepDive(element) {
+    const parent = element.parentElement;
+    parent.classList.toggle("open");
+  }
+
+  // Navbar background change on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 100) {
+      nav.classList.add('visible');
+    } else {
+      nav.classList.remove('visible');
+    }
+  });
+
+  // Hero canvas effect (Subtle starfield/dust)
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const particles = [];
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5,
+      dx: (Math.random() - 0.5) * 0.2,
+      dy: (Math.random() - 0.5) * 0.2,
+      alpha: Math.random()
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201, 162, 39, ${p.alpha * 0.5})`;
+      ctx.fill();
+      
+      p.x += p.dx;
+      p.y += p.dy;
+      
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+</body>
+</html>
